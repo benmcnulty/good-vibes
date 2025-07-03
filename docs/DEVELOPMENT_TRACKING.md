@@ -39,6 +39,8 @@ Checkboxes allow progress to be tracked over multiple commits or pull requests. 
 
 - [x] **Module 4: Articles Section**
   - Added semantic HTML, consistent CSS, and dynamic loading placeholders (`cf0b391`)
+- [x] **Module 5: Core Utilities and Helpers**
+  - Added utils.js and utils.css with reusable functions and styles (`d26b880`)
 ## Best Practices
 
 - Keep each entry short and clear so it is easy for any agent to continue the work.
