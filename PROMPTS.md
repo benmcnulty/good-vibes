@@ -162,6 +162,7 @@ Instructions:
 Keep the roadmap and tracking documentation fully aligned with the current state of the project.
 ```
 
+
 ## Articles Section Implementation Prompt for Claude Code
 
 **Prompt for Claude Code:**  
@@ -183,4 +184,25 @@ Instructions:
 - Ensure changes remain scoped, modular, and easy to extend in future iterations.
 
 Keep the implementation clean, clear, and aligned with the modular vibe coding approach.
+```
+
+## Post-Articles Section Review Prompt for Codex
+
+**Prompt for Codex:**  
+```
+Please continue in your role as the planning and roadmap manager for the **Good Vibes** project.
+
+Context:
+- Claude Code has completed the implementation of **Module 4: Articles Section** as defined in the roadmap.
+- The new section includes semantic HTML, consistent CSS styling, placeholder article items, and optional notes for dynamic content loading.
+- This work should align with the modular design approach and integrate cleanly with the Core Layout, Introduction, and Repositories sections.
+
+Instructions:
+- Review the committed Articles Section for alignment with the roadmap and development tracking.
+- Update `docs/ROADMAP.md` and `docs/DEVELOPMENT_TRACKING.md` as needed to reflect this new module’s completion and any adjustments.
+- Note any structural refinements or best practices to inform future enhancements or additional sections.
+- Confirm that the modular scope and agent responsibilities remain aligned with `AGENTS.md`, `CLAUDE.md`, and `.github/copilot-instructions.md`.
+- Keep all planning documents accurate, clear, and actionable for the next phases.
+
+Maintain consistency and clarity as you integrate this milestone into the living roadmap.
 ```
