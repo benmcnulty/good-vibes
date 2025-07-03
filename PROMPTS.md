@@ -73,3 +73,26 @@ Instructions:
 
 Maintain clear structure and accuracy as you integrate this development milestone into the planning documentation.
 ```
+
+## Introduction Section Implementation Prompt for Claude Code
+
+**Prompt for Claude Code:**  
+```
+Please continue in your role as development agent for the **Good Vibes** project and proceed with the next module according to the approved roadmap.
+
+Context:
+- This task focuses on **Module 2: Introduction Section** as outlined in `docs/ROADMAP.md`.
+- The Introduction Section will present an overview of the Good Vibes project, its purpose, and any relevant vibe coding context.
+- The section should be clearly visible within the SPA’s Core Layout and linked from the global navigation.
+
+Instructions:
+- Develop the HTML for the Introduction Section using semantic markup.
+- Add appropriate CSS to ensure consistent styling with the Core Layout.
+- Include placeholder text or basic example content that can be refined later.
+- Use clear inline comments where needed to explain structure or styling decisions.
+- Ensure the section is modular and easy to update or replace with dynamic content in the future.
+- Follow coding standards and guidelines defined in `CLAUDE.md` and coordinate with Codex and Copilot as described.
+- Keep the repository organized and updated to reflect the new section in alignment with the modular development approach.
+
+Focus on clean, maintainable structure and keep changes scoped to this section.
+```
