@@ -4,49 +4,26 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function initializeNavigation() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const contentSections = document.querySelectorAll('.content-section');
+    const navLinks = VibeUtils.selectAll('.nav-link');
     
     // Add click event listeners to navigation links
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        VibeUtils.addListener(link, 'click', function(e) {
             e.preventDefault();
             
             // Get the target section ID from the href
             const targetId = this.getAttribute('href').substring(1);
             
             // Update active states and show the selected section
-            updateActiveStates(this, targetId);
+            updateActiveStates(targetId);
         });
     });
 }
 
-function updateActiveStates(clickedLink, targetId) {
-    // Remove active class from all nav links
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-        link.removeAttribute('aria-current');
-    });
-
-    // Add active class to clicked link
-    clickedLink.classList.add('active');
-    clickedLink.setAttribute('aria-current', 'page');
-
-    // Show the target section and hide others
-    showSection(targetId);
-}
-
-function showSection(sectionId) {
-    // Hide all sections
-    document.querySelectorAll('.content-section').forEach(section => {
-        section.classList.remove('active');
-    });
-
-    // Show the target section
-    const targetSection = document.getElementById(sectionId);
-    if (targetSection) {
-        targetSection.classList.add('active');
-    }
+function updateActiveStates(targetId) {
+    // Update navigation and section visibility using utilities
+    VibeUtils.updateNavigation(targetId);
+    VibeUtils.showOnlySection(targetId);
 }
 
 // Future: GitHub API integration for dynamic repository loading
@@ -85,35 +62,20 @@ function loadRepositories() {
 }
 
 // Helper function to generate repository card HTML
-// Helper function to escape HTML special characters
-function escapeHTML(str) {
-    if (typeof str !== 'string') return str;
-    return str.replace(/[&<>"'`=\/]/g, function (s) {
-        return ({
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#39;',
-            '`': '&#96;',
-            '=': '&#61;',
-            '/': '&#47;'
-        })[s];
-    });
-}
+// Use utility function for HTML escaping
 
 function generateRepoCard(repo) {
-    // Safely escape all user-controlled data to prevent XSS
-    const name = escapeHTML(repo.name);
-    const html_url = escapeHTML(repo.html_url);
-    const language = escapeHTML(repo.language || 'Unknown');
+    // Safely escape all user-controlled data to prevent XSS using utilities
+    const name = VibeUtils.escapeHTML(repo.name);
+    const html_url = VibeUtils.escapeHTML(repo.html_url);
+    const language = VibeUtils.escapeHTML(repo.language || 'Unknown');
     const stars = Number(repo.stargazers_count) || 0;
-    const description = escapeHTML(repo.description || 'No description available');
+    const description = VibeUtils.escapeHTML(repo.description || 'No description available');
     const topics = Array.isArray(repo.topics)
-        ? repo.topics.map(topic => `<span class="topic-tag">${escapeHTML(topic)}</span>`).join('')
+        ? repo.topics.map(topic => `<span class="topic-tag">${VibeUtils.escapeHTML(topic)}</span>`).join('')
         : '';
-    const updated_at = escapeHTML(repo.updated_at);
-    const updated_date = repo.updated_at ? new Date(repo.updated_at).toLocaleDateString() : '';
+    const updated_at = VibeUtils.escapeHTML(repo.updated_at);
+    const updated_date = repo.updated_at ? VibeUtils.formatDate(repo.updated_at) : '';
 
     return `
         <article class="repo-card">
@@ -142,3 +104,90 @@ function generateRepoCard(repo) {
         </article>
     `;
 }
+
+// Future: Articles/CMS integration for dynamic article loading
+// This function would fetch articles from a CMS or static files
+function loadArticles() {
+    // Placeholder for future implementation
+    // Would load articles from markdown files, CMS API, or static JSON
+    console.log('loadArticles called - implement article loading system');
+    
+    // Example implementation structure:
+    // const container = document.getElementById('articles-container');
+    // const loading = document.getElementById('articles-loading');
+    // const error = document.getElementById('articles-error');
+    
+    // Show loading state
+    // loading.style.display = 'block';
+    // container.style.display = 'none';
+    // error.style.display = 'none';
+    
+    // Fetch articles data (from CMS, markdown files, or API)
+    // fetch('/api/articles') // or load from static JSON/markdown
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     // Hide loading, show container
+    //     loading.style.display = 'none';
+    //     container.style.display = 'grid';
+    //     
+    //     // Generate article cards from data
+    //     container.innerHTML = data.map(article => generateArticleCard(article)).join('');
+    //   })
+    //   .catch(err => {
+    //     // Show error state
+    //     loading.style.display = 'none';
+    //     error.style.display = 'block';
+    //   });
+}
+
+// Helper function to generate article card HTML
+function generateArticleCard(article) {
+    // Future implementation would create HTML from article data using utilities
+    const title = VibeUtils.escapeHTML(article.title);
+    const slug = VibeUtils.escapeHTML(article.slug);
+    const excerpt = VibeUtils.escapeHTML(article.excerpt || '');
+    const publishedDate = article.published_date ? VibeUtils.formatDate(article.published_date) : '';
+    const readTime = VibeUtils.escapeHTML(article.read_time || '5 min read');
+    const tags = Array.isArray(article.tags)
+        ? article.tags.map(tag => `<span class="article-tag">${VibeUtils.escapeHTML(tag)}</span>`).join('')
+        : '';
+    
+    return `
+        <article class="article-card">
+            <header class="article-header">
+                <h3 class="article-title">
+                    <a href="/articles/${slug}" class="article-link">${title}</a>
+                </h3>
+                <div class="article-meta">
+                    <time class="article-date" datetime="${article.published_date}">${publishedDate}</time>
+                    <span class="article-read-time">${readTime}</span>
+                </div>
+            </header>
+            <p class="article-excerpt">
+                ${excerpt}
+            </p>
+            <footer class="article-footer">
+                <div class="article-tags">
+                    ${tags}
+                </div>
+                <a href="/articles/${slug}" class="article-read-more">Read more →</a>
+            </footer>
+        </article>
+    `;
+}
+
+// Event listener setup for retry buttons using utilities
+document.addEventListener('DOMContentLoaded', function() {
+    // Load articles on initial page load
+    loadArticles();
+
+    const retryArticlesBtn = VibeUtils.select('#retry-articles-btn');
+    if (retryArticlesBtn) {
+        VibeUtils.addListener(retryArticlesBtn, 'click', loadArticles);
+    }
+    
+    const retryReposBtn = VibeUtils.select('#retry-repos-btn');
+    if (retryReposBtn) {
+        VibeUtils.addListener(retryReposBtn, 'click', loadRepositories);
+    }
+});

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BenLive.tv - Good Vibes</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="utils.css">
 </head>
 <body>
     <!-- Main site header with navigation -->
@@ -196,8 +197,28 @@
 
             <!-- Articles Section -->
             <section id="articles" class="content-section">
-                <h2>Articles</h2>
-                <p>Articles about the vibe coding journey will be displayed here.</p>
+                <div class="articles-header">
+                    <h2>Articles</h2>
+                    <p class="articles-intro">Read about our vibe coding journey, insights, and experiences in building positive development culture.</p>
+                </div>
+                
+                <!-- Articles listing container for dynamic content -->
+                <div class="articles-container" id="articles-container">
+                    <!-- Static placeholder articles removed to prevent duplication when dynamic loading is implemented -->
+                    <!-- Articles will be rendered dynamically here -->
+                </div>
+                
+                <!-- Loading state placeholder for future dynamic implementation -->
+                <div class="articles-loading" id="articles-loading" role="status" aria-live="polite">
+                    <div class="loading-spinner"></div>
+                    <p>Loading articles...</p>
+                </div>
+                
+                <!-- Error state placeholder for future dynamic implementation -->
+                <div class="articles-error" id="articles-error">
+                    <p>Unable to load articles at this time. Please try again later.</p>
+                    <button class="retry-button" type="button" id="retry-articles-btn">Retry</button>
+                </div>
             </section>
         </div>
     </main>
@@ -209,6 +230,7 @@
         </div>
     </footer>
 
+    <script src="utils.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

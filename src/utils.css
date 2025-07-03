@@ -1,0 +1,275 @@
+/**
+ * Good Vibes CSS Utilities
+ * Reusable CSS utility classes and helpers for consistent styling
+ */
+
+/* =============================================================================
+   Layout Utilities
+   ============================================================================= */
+
+.u-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+.u-text-center { text-align: center; }
+.u-text-left { text-align: left; }
+.u-text-right { text-align: right; }
+
+.u-flex { display: flex; }
+.u-flex-center { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+.u-flex-between { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+}
+.u-flex-column { flex-direction: column; }
+.u-flex-wrap { flex-wrap: wrap; }
+
+.u-grid { display: grid; }
+.u-grid-auto { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+/* =============================================================================
+   Spacing Utilities
+   ============================================================================= */
+
+.u-m-0 { margin: 0; }
+.u-mt-0 { margin-top: 0; }
+.u-mb-0 { margin-bottom: 0; }
+.u-ml-0 { margin-left: 0; }
+.u-mr-0 { margin-right: 0; }
+
+.u-m-xs { margin: var(--spacing-xs); }
+.u-m-sm { margin: var(--spacing-sm); }
+.u-m-md { margin: var(--spacing-md); }
+.u-m-lg { margin: var(--spacing-lg); }
+.u-m-xl { margin: var(--spacing-xl); }
+
+.u-mt-xs { margin-top: var(--spacing-xs); }
+.u-mt-sm { margin-top: var(--spacing-sm); }
+.u-mt-md { margin-top: var(--spacing-md); }
+.u-mt-lg { margin-top: var(--spacing-lg); }
+.u-mt-xl { margin-top: var(--spacing-xl); }
+
+.u-mb-xs { margin-bottom: var(--spacing-xs); }
+.u-mb-sm { margin-bottom: var(--spacing-sm); }
+.u-mb-md { margin-bottom: var(--spacing-md); }
+.u-mb-lg { margin-bottom: var(--spacing-lg); }
+.u-mb-xl { margin-bottom: var(--spacing-xl); }
+
+.u-p-0 { padding: 0; }
+.u-p-xs { padding: var(--spacing-xs); }
+.u-p-sm { padding: var(--spacing-sm); }
+.u-p-md { padding: var(--spacing-md); }
+.u-p-lg { padding: var(--spacing-lg); }
+.u-p-xl { padding: var(--spacing-xl); }
+
+/* =============================================================================
+   Color Utilities
+   ============================================================================= */
+
+.u-text-primary { color: var(--primary-color); }
+.u-text-secondary { color: var(--secondary-color); }
+.u-text-light { color: var(--text-light); }
+.u-text-muted { color: var(--text-light); opacity: 0.7; }
+
+.u-bg-primary { background-color: var(--primary-color); }
+.u-bg-secondary { background-color: var(--secondary-color); }
+.u-bg-surface { background-color: var(--surface-color); }
+.u-bg-background { background-color: var(--background-color); }
+
+/* =============================================================================
+   Border Utilities
+   ============================================================================= */
+
+.u-border { border: 1px solid var(--border-color); }
+.u-border-top { border-top: 1px solid var(--border-color); }
+.u-border-bottom { border-bottom: 1px solid var(--border-color); }
+.u-border-left { border-left: 1px solid var(--border-color); }
+.u-border-right { border-right: 1px solid var(--border-color); }
+
+.u-border-primary { border-color: var(--primary-color); }
+.u-border-secondary { border-color: var(--secondary-color); }
+
+.u-border-radius { border-radius: var(--border-radius); }
+.u-border-radius-sm { border-radius: calc(var(--border-radius) / 2); }
+.u-border-radius-lg { border-radius: calc(var(--border-radius) * 2); }
+.u-border-radius-full { border-radius: 50%; }
+
+/* =============================================================================
+   Typography Utilities
+   ============================================================================= */
+
+.u-font-weight-normal { font-weight: 400; }
+.u-font-weight-medium { font-weight: 500; }
+.u-font-weight-semibold { font-weight: 600; }
+.u-font-weight-bold { font-weight: 700; }
+
+.u-font-size-xs { font-size: 0.75rem; }
+.u-font-size-sm { font-size: 0.875rem; }
+.u-font-size-base { font-size: 1rem; }
+.u-font-size-lg { font-size: 1.125rem; }
+.u-font-size-xl { font-size: 1.25rem; }
+.u-font-size-2xl { font-size: 1.5rem; }
+.u-font-size-3xl { font-size: 2rem; }
+
+.u-line-height-none { line-height: 1; }
+.u-line-height-tight { line-height: 1.25; }
+.u-line-height-normal { line-height: 1.5; }
+.u-line-height-relaxed { line-height: 1.75; }
+
+/* =============================================================================
+   Display Utilities
+   ============================================================================= */
+
+.u-block { display: block; }
+.u-inline { display: inline; }
+.u-inline-block { display: inline-block; }
+.u-hidden { display: none; }
+
+.u-visible { visibility: visible; }
+.u-invisible { visibility: hidden; }
+
+.u-opacity-0 { opacity: 0; }
+.u-opacity-25 { opacity: 0.25; }
+.u-opacity-50 { opacity: 0.5; }
+.u-opacity-75 { opacity: 0.75; }
+.u-opacity-100 { opacity: 1; }
+
+/* =============================================================================
+   Position Utilities
+   ============================================================================= */
+
+.u-relative { position: relative; }
+.u-absolute { position: absolute; }
+.u-fixed { position: fixed; }
+.u-sticky { position: sticky; }
+
+.u-top-0 { top: 0; }
+.u-bottom-0 { bottom: 0; }
+.u-left-0 { left: 0; }
+.u-right-0 { right: 0; }
+
+/* =============================================================================
+   Shadow Utilities
+   ============================================================================= */
+
+.u-shadow { box-shadow: var(--shadow); }
+.u-shadow-sm { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); }
+.u-shadow-md { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); }
+.u-shadow-lg { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); }
+.u-shadow-none { box-shadow: none; }
+
+/* =============================================================================
+   Interaction Utilities
+   ============================================================================= */
+
+.u-cursor-pointer { cursor: pointer; }
+.u-cursor-default { cursor: default; }
+.u-cursor-not-allowed { cursor: not-allowed; }
+
+.u-select-none { 
+  -webkit-user-select: none;
+  user-select: none; 
+}
+.u-select-all { 
+  -webkit-user-select: all;
+  user-select: all; 
+}
+
+.u-pointer-events-none { pointer-events: none; }
+.u-pointer-events-auto { pointer-events: auto; }
+
+/* =============================================================================
+   Animation Utilities
+   ============================================================================= */
+
+.u-transition { 
+  transition: all 0.3s ease; 
+}
+.u-transition-fast { 
+  transition: all 0.15s ease; 
+}
+.u-transition-slow { 
+  transition: all 0.5s ease; 
+}
+
+.u-transform { transform: translateZ(0); } /* Force hardware acceleration */
+
+.u-hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+.u-hover-scale:hover {
+  transform: scale(1.02);
+}
+
+/* =============================================================================
+   Accessibility Utilities
+   ============================================================================= */
+
+.u-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.u-focus-visible:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+}
+
+/* =============================================================================
+   Responsive Utilities
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .u-hidden-mobile { display: none; }
+  .u-text-center-mobile { text-align: center; }
+  .u-flex-column-mobile { flex-direction: column; }
+  .u-grid-1-mobile { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 769px) {
+  .u-hidden-desktop { display: none; }
+}
+
+/* =============================================================================
+   Loading State Utilities
+   ============================================================================= */
+
+.u-loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.u-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--border-color);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: u-spin 1s linear infinite;
+}
+
+@keyframes u-spin {
+  to { transform: rotate(360deg); }
+}

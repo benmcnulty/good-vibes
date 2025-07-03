@@ -11,9 +11,9 @@ Each numbered item represents a module of work that can be tracked separately in
 - [x] **Module 1: Core Layout** – Implemented basic HTML skeleton with header, footer, navigation, base CSS, and minimal JavaScript.
 - [x] **Module 2: Introduction Section** – Implemented semantic HTML, responsive styling, and placeholder content integrated into the core layout (`66ea2c0`).
 - [x] **Module 3: GitHub Repositories Listing** – Static listing with dynamic loading placeholders (`092361b`).
-- [ ] **Module 4: Articles Section** – Display and navigate articles.
-- [ ] **Module 5: Utilities and Helpers** – Shared JavaScript and CSS helpers.
-- [ ] **Module 6: Build and Testing Setup** – Development tooling and automated tests.
+- [x] **Module 4: Articles Section** – Basic list layout with dynamic loading placeholders (`cf0b391`).
+- [x] **Module 5: Utilities and Helpers** – Shared JavaScript and CSS helpers (`d26b880`)
+- [x] **Module 6: Build and Testing Setup** – Development tooling and automated tests (`afe0fe5`).
 
 1. **Core Layout**
    - Basic HTML structure with header, footer, and central content container.
@@ -63,3 +63,29 @@ Roadmap updates and implementation details should remain small in scope to keep 
 - Design responsive layouts concurrently with desktop styles.
 - Use placeholder content and accessible loading/error states when preparing for dynamic data.
 - Consider separating section-specific styles into dedicated CSS files as modules expand.
+- Plan for dynamic sections early by adding ARIA live regions and retry controls.
+- Organize shared utilities in dedicated files to promote reuse across modules.
+
+## Retrospective
+
+The first development cycle successfully delivered all six planned modules with a strong focus on modularity and minimal tooling. Collaboration between OpenAI Codex, Claude Code, and GitHub Copilot kept implementation organized and consistent. Highlights include:
+
+- Clear division of responsibilities between planning, implementation, and review.
+- Regular roadmap updates that ensured each module was scoped and tracked.
+- A lightweight build and testing setup that runs locally with simple commands.
+
+Areas for improvement:
+
+- Reduce lint warnings by refining utility functions and adhering more closely to style rules.
+- Expand automated test coverage to catch edge cases earlier.
+- Consider continuous integration to enforce linting and tests on pull requests.
+
+## Version 2 Ideas
+
+Future work could introduce dynamic data loading and broader testing:
+
+- Fetch GitHub repositories and articles from remote APIs with graceful fallback when offline.
+- Add end-to-end tests and accessibility audits.
+- Integrate a small state management layer for more complex interactions.
+- Explore deployment automation and performance monitoring.
+
