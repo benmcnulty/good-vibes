@@ -31,8 +31,11 @@ Checkboxes allow progress to be tracked over multiple commits or pull requests. 
 - [x] **Module 1: Core Layout**
   - index.html, styles.css, and script.js created
   - Header, footer, navigation, and base styling implemented (`a45f8ee`)
-- [ ] **Module 2: Introduction Section**
-  - Add introduction content and section-specific styles
+- [x] **Module 2: Introduction Section**
+  - Added semantic HTML structure and responsive CSS (`66ea2c0`)
+- [ ] **Module 3: GitHub Repositories Listing**
+  - Build layout for repository cards
+  - Add JavaScript to fetch repositories from GitHub
 
 ## Best Practices
 

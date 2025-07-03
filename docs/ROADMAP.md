@@ -9,7 +9,7 @@ Each numbered item represents a module of work that can be tracked separately in
 ### Status Overview
 
 - [x] **Module 1: Core Layout** – Implemented basic HTML skeleton with header, footer, navigation, base CSS, and minimal JavaScript.
-- [ ] **Module 2: Introduction Section** – Add introduction content and styling.
+- [x] **Module 2: Introduction Section** – Implemented semantic HTML, responsive styling, and placeholder content integrated into the core layout (`66ea2c0`).
 - [ ] **Module 3: GitHub Repositories Listing** – Fetch and display repositories.
 - [ ] **Module 4: Articles Section** – Display and navigate articles.
 - [ ] **Module 5: Utilities and Helpers** – Shared JavaScript and CSS helpers.
@@ -53,3 +53,10 @@ Each module or sub-component should be tracked as a discrete task. Typical workf
 4. Once merged, this roadmap is updated to reflect progress or introduce the next tasks.
 
 Roadmap updates and implementation details should remain small in scope to keep iterations easy to review and merge.
+
+## Lessons Learned
+
+- Employ semantic HTML elements like `<section>`, `<article>`, and `<header>` for clarity and accessibility.
+- Keep CSS modular using variables and consistent class names.
+- Provide visible focus states for keyboard navigation.
+- Design responsive layouts concurrently with desktop styles.
