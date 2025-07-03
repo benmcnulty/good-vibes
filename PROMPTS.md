@@ -230,3 +230,25 @@ Instructions:
 
 Focus on simplicity, clarity, and maintainability as you implement these core utilities.
 ```
+
+## Post-Utilities and Helpers Review Prompt for Codex
+
+**Prompt for Codex:**  
+```
+Please continue in your role as the planning and roadmap manager for the **Good Vibes** project.
+
+Context:
+- Claude Code has completed the implementation of **Module 5: Core Utilities and Helpers** as defined in the roadmap.
+- The new utilities include reusable helper functions, small scripts, or snippets that support the modular structure of the SPA.
+- This work should align with the style, structure, and coding conventions already established in previous modules.
+
+Instructions:
+- Review the committed Core Utilities and Helpers for alignment with the existing roadmap and development tracking.
+- Update `docs/ROADMAP.md` and `docs/DEVELOPMENT_TRACKING.md` as needed to reflect this module’s addition and any structural improvements.
+- Confirm that all helpers are scoped properly, support current and future modules, and follow the maintainable modular approach.
+- Note any patterns or conventions that should guide future utilities or refactors.
+- Keep all planning and tracking documents clear, modular, and actionable for the next development steps.
+- Ensure alignment with `AGENTS.md`, `CLAUDE.md`, and `.github/copilot-instructions.md`.
+
+Maintain accuracy and cohesion as you evolve the roadmap for the next phases of the project.
+```
