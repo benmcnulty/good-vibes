@@ -11,7 +11,7 @@ Each numbered item represents a module of work that can be tracked separately in
 - [x] **Module 1: Core Layout** – Implemented basic HTML skeleton with header, footer, navigation, base CSS, and minimal JavaScript.
 - [x] **Module 2: Introduction Section** – Implemented semantic HTML, responsive styling, and placeholder content integrated into the core layout (`66ea2c0`).
 - [x] **Module 3: GitHub Repositories Listing** – Static listing with dynamic loading placeholders (`092361b`).
-- [ ] **Module 4: Articles Section** – Display and navigate articles.
+- [x] **Module 4: Articles Section** – Basic list layout with dynamic loading placeholders (`cf0b391`).
 - [ ] **Module 5: Utilities and Helpers** – Shared JavaScript and CSS helpers.
 - [ ] **Module 6: Build and Testing Setup** – Development tooling and automated tests.
 
@@ -63,3 +63,4 @@ Roadmap updates and implementation details should remain small in scope to keep 
 - Design responsive layouts concurrently with desktop styles.
 - Use placeholder content and accessible loading/error states when preparing for dynamic data.
 - Consider separating section-specific styles into dedicated CSS files as modules expand.
+- Plan for dynamic sections early by adding ARIA live regions and retry controls.

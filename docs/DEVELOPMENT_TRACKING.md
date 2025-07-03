@@ -37,13 +37,13 @@ Checkboxes allow progress to be tracked over multiple commits or pull requests. 
   - Added static repository cards and styling
   - Created placeholders and helper code for future GitHub API integration (`092361b`)
 
-- [ ] **Module 4: Articles Section**
-  - Build basic layout for article list and content area
-  - Determine article format (Markdown or HTML)
+- [x] **Module 4: Articles Section**
+  - Added semantic HTML, consistent CSS, and dynamic loading placeholders (`cf0b391`)
 ## Best Practices
 
 - Keep each entry short and clear so it is easy for any agent to continue the work.
 - When closing a task, provide a brief note about the implementation (file names or PR reference).
 - Review this guide regularly to ensure it matches the actual project state.
+- Use ARIA live regions and retry controls for asynchronous content sections.
 
 This tracking approach ensures iterative progress without strict deadlines, allowing the AI agents to maintain momentum while keeping documentation in sync with the codebase.
