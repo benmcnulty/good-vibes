@@ -140,3 +140,47 @@ Instructions:
 
 Keep the implementation clean, modular, and aligned with the vibe coding approach.
 ```
+
+## Post-Repositories Listing Review Prompt for Codex
+
+**Prompt for Codex:**  
+```
+Please continue in your role as the planning and roadmap manager for the **Good Vibes** project.
+
+Context:
+- Claude Code has completed the implementation of **Module 3: GitHub Repositories Listing** as defined in the roadmap.
+- The new section includes semantic HTML, consistent CSS styling, placeholder repository items, and optional notes for dynamic loading.
+- This work should align with the modular design approach, Core Layout, and Introduction Section.
+
+Instructions:
+- Review the committed GitHub Repositories Listing for consistency with the overall roadmap and development tracking.
+- Update `docs/ROADMAP.md` and `docs/DEVELOPMENT_TRACKING.md` as needed to reflect the current state and any refinements.
+- Document any new structural notes or lessons learned that will inform future modules.
+- Ensure that modular scope and agent responsibilities remain clear and aligned with `AGENTS.md`, `CLAUDE.md`, and `.github/copilot-instructions.md`.
+- Maintain clear structure, accurate versioning, and actionable next steps for the remaining modules.
+
+Keep the roadmap and tracking documentation fully aligned with the current state of the project.
+```
+
+## Articles Section Implementation Prompt for Claude Code
+
+**Prompt for Claude Code:**  
+```
+Please continue in your role as development agent for the **Good Vibes** project and proceed with the next module according to the approved roadmap.
+
+Context:
+- This task focuses on **Module 4: Articles Section** as defined in `docs/ROADMAP.md`.
+- The Articles Section will display a list of articles or posts about the vibe coding journey.
+- It should be accessible from the global navigation and follow the same layout and style conventions established by previous modules.
+
+Instructions:
+- Develop the HTML structure for the Articles Section using semantic, accessible markup.
+- Style the section with CSS so it integrates cleanly with the Core Layout, Introduction, and Repositories sections.
+- Include placeholder article items (e.g., title, snippet, read more link) to illustrate the intended structure.
+- Add inline comments where helpful to explain structural decisions or future dynamic features.
+- If appropriate, include minimal JavaScript or pseudo-code comments to indicate how articles might be loaded dynamically.
+- Follow the standards and conventions described in `CLAUDE.md` and coordinate with Codex and Copilot as needed.
+- Ensure changes remain scoped, modular, and easy to extend in future iterations.
+
+Keep the implementation clean, clear, and aligned with the modular vibe coding approach.
+```
