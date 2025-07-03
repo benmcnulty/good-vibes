@@ -96,3 +96,24 @@ Instructions:
 
 Focus on clean, maintainable structure and keep changes scoped to this section.
 ```
+
+## Post-Introduction Review Prompt for Codex
+
+**Prompt for Codex:**  
+```
+Please continue in your role as the planning and roadmap manager for the **Good Vibes** project.
+
+Context:
+- Claude Code has completed the implementation of **Module 2: Introduction Section** as outlined in the roadmap.
+- The new section includes semantic HTML, consistent CSS, placeholder content, and links integrated into the Core Layout.
+- This work should align with the modular design, coding conventions, and project structure.
+
+Instructions:
+- Review the committed Introduction Section for alignment with the roadmap and development tracking.
+- Update `docs/ROADMAP.md` and `docs/DEVELOPMENT_TRACKING.md` if needed to accurately reflect the current state of the project.
+- Ensure any lessons learned or new standards are noted for future modules.
+- Maintain consistency and clarity across all planning documents.
+- Keep all updates aligned with the collaborative AI agent model described in `AGENTS.md`, `CLAUDE.md`, and `.github/copilot-instructions.md`.
+
+Ensure the planning documents remain accurate and actionable as development continues.
+```
