@@ -7,17 +7,50 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>BenLive.tv - Good Vibes</h1>
+    <!-- Main site header with navigation -->
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">BenLive.tv - Good Vibes</h1>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="#introduction" class="nav-link active" aria-current="page">Introduction</a></li>
+                    <li><a href="#repositories" class="nav-link">GitHub Repositories</a></li>
+                    <li><a href="#articles" class="nav-link">Articles</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <main>
-        <section id="welcome">
-            <h2>Welcome to Good Vibes</h2>
-        </section>
+
+    <!-- Main content area for dynamic sections -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Introduction Section -->
+            <section id="introduction" class="content-section active">
+                <h2>Welcome to Good Vibes</h2>
+                <p>This is where the vibe coding journey begins. Content about Good Vibes and the purpose of this project will be displayed here.</p>
+            </section>
+
+            <!-- GitHub Repositories Section -->
+            <section id="repositories" class="content-section">
+                <h2>GitHub Repositories</h2>
+                <p>Related repositories and projects will be listed here.</p>
+            </section>
+
+            <!-- Articles Section -->
+            <section id="articles" class="content-section">
+                <h2>Articles</h2>
+                <p>Articles about the vibe coding journey will be displayed here.</p>
+            </section>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2025 BenLive.tv - Good Vibes. All rights reserved.</p>
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 BenLive.tv - Good Vibes. All rights reserved.</p>
+        </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
