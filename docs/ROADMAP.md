@@ -6,6 +6,15 @@ This roadmap outlines planned modules and sub-components for the Good Vibes sing
 
 Each numbered item represents a module of work that can be tracked separately in the repository. Sub-items describe related tasks or components.
 
+### Status Overview
+
+- [x] **Module 1: Core Layout** – Implemented basic HTML skeleton with header, footer, navigation, base CSS, and minimal JavaScript.
+- [ ] **Module 2: Introduction Section** – Add introduction content and styling.
+- [ ] **Module 3: GitHub Repositories Listing** – Fetch and display repositories.
+- [ ] **Module 4: Articles Section** – Display and navigate articles.
+- [ ] **Module 5: Utilities and Helpers** – Shared JavaScript and CSS helpers.
+- [ ] **Module 6: Build and Testing Setup** – Development tooling and automated tests.
+
 1. **Core Layout**
    - Basic HTML structure with header, footer, and central content container.
    - Shared navigation elements for switching between sections.

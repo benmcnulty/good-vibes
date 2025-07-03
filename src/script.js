@@ -25,10 +25,12 @@ function updateActiveStates(clickedLink, targetId) {
     // Remove active class from all nav links
     document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
+        link.removeAttribute('aria-current');
     });
 
     // Add active class to clicked link
     clickedLink.classList.add('active');
+    clickedLink.setAttribute('aria-current', 'page');
 
     // Show the target section and hide others
     showSection(targetId);
