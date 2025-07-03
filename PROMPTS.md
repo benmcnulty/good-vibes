@@ -231,6 +231,7 @@ Instructions:
 Focus on simplicity, clarity, and maintainability as you implement these core utilities.
 ```
 
+
 ## Post-Utilities and Helpers Review Prompt for Codex
 
 **Prompt for Codex:**  
@@ -251,4 +252,27 @@ Instructions:
 - Ensure alignment with `AGENTS.md`, `CLAUDE.md`, and `.github/copilot-instructions.md`.
 
 Maintain accuracy and cohesion as you evolve the roadmap for the next phases of the project.
+```
+
+## Build and Testing Setup Implementation Prompt for Claude Code
+
+**Prompt for Claude Code:**  
+```
+Please continue in your role as development agent for the **Good Vibes** project and proceed with the next module according to the updated roadmap.
+
+Context:
+- This task focuses on **Module 6: Build and Testing Setup** as defined in `docs/ROADMAP.md`.
+- This module establishes a simple, maintainable structure for building and testing the SPA’s HTML, CSS, and JavaScript components.
+- This setup should align with the project’s minimal tooling approach and the style conventions already implemented.
+
+Instructions:
+- Implement any basic build scripts if needed (for example, simple bundling or minification, if appropriate).
+- Add lightweight test files or placeholders showing how core components can be tested in the future.
+- Include clear inline comments explaining how the build and test pieces fit into the overall repo.
+- Keep this setup simple and scoped — no unnecessary complexity or heavy tooling.
+- Ensure that the structure supports future expansion if more testing or build steps are added.
+- Follow all standards defined in `CLAUDE.md` and coordinate with Codex and Copilot as appropriate.
+- Maintain clarity and modularity to keep the repository well-organized and easy to evolve.
+
+Focus on maintainability, simplicity, and clear documentation as you implement this setup.
 ```
