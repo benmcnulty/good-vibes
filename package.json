@@ -44,7 +44,8 @@
     "terser": "^5.27.0",
     "cssnano": "^6.0.3",
     "postcss": "^8.4.33",
-    "html-minifier-terser": "^7.2.0"
+    "html-minifier-terser": "^7.2.0",
+    "jsdom": "^23.2.0"
   },
   "browserslist": [
     "> 1%",

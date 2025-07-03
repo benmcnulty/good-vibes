@@ -3,11 +3,11 @@
   --primary-color: #3498db;
   --secondary-color: #2c3e50;
   --background-color: #f4f4f4;
-  --surface-color: #ffffff;
-  --text-color: #333333;
-  --text-light: #666666;
+  --surface-color: #fff;
+  --text-color: #333;
+  --text-light: #666;
   --border-color: #e0e0e0;
-  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow: 0 2px 4px rgb(0 0 0 / 10%);
   --border-radius: 8px;
   --container-width: 1200px;
   --spacing-xs: 0.5rem;
@@ -130,7 +130,7 @@ a:hover {
 .nav-link:focus-visible {
   outline: 2px solid var(--primary-color);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+  box-shadow: 0 0 0 4px rgb(52 152 219 / 20%);
 }
 
 .nav-link:hover {
@@ -180,7 +180,7 @@ a:hover {
 
 .site-footer p {
   margin-bottom: 0;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgb(255 255 255 / 80%);
 }
 
 /* Introduction Section Styles */
@@ -198,7 +198,6 @@ a:hover {
   font-size: 3rem;
   margin-bottom: var(--spacing-sm);
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
@@ -284,7 +283,7 @@ a:hover {
 .cta-button.primary:hover {
   background-color: var(--secondary-color);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+  box-shadow: 0 4px 12px rgb(52 152 219 / 30%);
   text-decoration: none;
 }
 
@@ -298,7 +297,7 @@ a:hover {
   background-color: var(--secondary-color);
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
+  box-shadow: 0 4px 12px rgb(44 62 80 / 30%);
   text-decoration: none;
 }
 
@@ -308,6 +307,7 @@ a:hover {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -315,7 +315,7 @@ a:hover {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .site-header .container {
     flex-direction: column;
     gap: var(--spacing-sm);
@@ -401,7 +401,7 @@ a:hover {
 
 .repo-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 15%);
 }
 
 .repo-header {
@@ -513,7 +513,7 @@ a:hover {
 
 .article-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 15%);
 }
 
 .article-header {
@@ -651,7 +651,7 @@ a:hover {
 }
 
 /* Responsive Design for Repositories and Articles */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .repos-container,
   .articles-container {
     grid-template-columns: 1fr;

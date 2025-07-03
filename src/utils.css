@@ -18,11 +18,13 @@
 .u-text-right { text-align: right; }
 
 .u-flex { display: flex; }
+
 .u-flex-center { 
   display: flex; 
   align-items: center; 
   justify-content: center; 
 }
+
 .u-flex-between { 
   display: flex; 
   justify-content: space-between; 
@@ -160,9 +162,9 @@
    ============================================================================= */
 
 .u-shadow { box-shadow: var(--shadow); }
-.u-shadow-sm { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); }
-.u-shadow-md { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); }
-.u-shadow-lg { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); }
+.u-shadow-sm { box-shadow: 0 1px 2px rgb(0 0 0 / 10%); }
+.u-shadow-md { box-shadow: 0 4px 8px rgb(0 0 0 / 15%); }
+.u-shadow-lg { box-shadow: 0 8px 24px rgb(0 0 0 / 15%); }
 .u-shadow-none { box-shadow: none; }
 
 /* =============================================================================
@@ -173,11 +175,12 @@
 .u-cursor-default { cursor: default; }
 .u-cursor-not-allowed { cursor: not-allowed; }
 
-.u-select-none { 
+.u-select-none {
   -webkit-user-select: none;
   user-select: none; 
 }
-.u-select-all { 
+
+.u-select-all {
   -webkit-user-select: all;
   user-select: all; 
 }
@@ -192,9 +195,11 @@
 .u-transition { 
   transition: all 0.3s ease; 
 }
+
 .u-transition-fast { 
   transition: all 0.15s ease; 
 }
+
 .u-transition-slow { 
   transition: all 0.5s ease; 
 }
@@ -228,21 +233,21 @@
 .u-focus-visible:focus-visible {
   outline: 2px solid var(--primary-color);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+  box-shadow: 0 0 0 4px rgb(52 152 219 / 20%);
 }
 
 /* =============================================================================
    Responsive Utilities
    ============================================================================= */
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .u-hidden-mobile { display: none; }
   .u-text-center-mobile { text-align: center; }
   .u-flex-column-mobile { flex-direction: column; }
   .u-grid-1-mobile { grid-template-columns: 1fr; }
 }
 
-@media (min-width: 769px) {
+@media (width >= 769px) {
   .u-hidden-desktop { display: none; }
 }
 

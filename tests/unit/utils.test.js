@@ -3,7 +3,7 @@
  * Tests core utility functions for reliability and correctness
  */
 
-import { test, describe } from 'node:test';
+import { test, describe, beforeEach, afterEach } from 'node:test';
 import assert from 'node:assert';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -39,7 +39,14 @@ const utilsPath = join(__dirname, '../../src/utils.js');
 const utilsCode = readFileSync(utilsPath, 'utf8');
 
 // Functions to hold references to utilities
-let select, selectAll, escapeHTML, formatDate, getRelativeTime, validateRequired, showOnlySection, updateNavigation;
+let select,
+    selectAll,
+    escapeHTML,
+    formatDate,
+    getRelativeTime,
+    validateRequired,
+    showOnlySection,
+    updateNavigation;
 
 function loadUtils() {
     eval(utilsCode);
