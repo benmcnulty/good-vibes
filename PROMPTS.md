@@ -324,3 +324,24 @@ Instructions:
 
 Focus on leaving the codebase clean, maintainable, well-tested, and ready for future vibe coding iterations.
 ```
+
+## Publish Retrospective and Final Documentation Wrap-Up Prompt for Claude Code
+
+**Prompt for Claude Code:**  
+```
+Please continue in your role as development agent for the **Good Vibes** project and complete this final wrap-up task.
+
+Context:
+- Your retrospective has been provided interactively but should now be formally recorded for future reference.
+- The project is ready for version tagging or pausing until the next development cycle.
+
+Instructions:
+- Format and publish your full retrospective as a new `Retrospective.md` file in the root of the repository.
+- Ensure the document is clear, well-structured, and easy to read.
+- Update `README.md` with a brief summary line that points to the published retrospective.
+- If appropriate, update any other relevant documentation (e.g., `docs/ROADMAP.md`) to note that the current development cycle is complete.
+- Confirm that all files are consistent with the modular, maintainable vibe coding approach.
+- Follow documentation standards as described in `CLAUDE.md`.
+
+Focus on clarity, professionalism, and maintainability as you close out this project stage.
+```
