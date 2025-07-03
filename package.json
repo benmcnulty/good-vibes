@@ -1,0 +1,57 @@
+{
+  "name": "good-vibes",
+  "version": "1.0.0",
+  "description": "A single-page application showcasing the vibe coding philosophy and community projects",
+  "main": "src/index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 -m http.server 8080 --directory src",
+    "start": "npm run dev",
+    "test": "node --test tests/**/*.test.js",
+    "test:watch": "node --test --watch tests/**/*.test.js",
+    "test:coverage": "c8 node --test tests/**/*.test.js",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint src/**/*.js",
+    "lint:css": "stylelint src/**/*.css",
+    "lint:fix": "npm run lint:js -- --fix && npm run lint:css -- --fix",
+    "build": "npm run build:clean && npm run build:copy && npm run build:minify",
+    "build:clean": "rm -rf dist && mkdir -p dist",
+    "build:copy": "cp -r src/* dist/",
+    "build:minify": "node scripts/minify.js",
+    "validate": "npm run lint && npm test",
+    "serve:dist": "python3 -m http.server 8080 --directory dist"
+  },
+  "keywords": [
+    "vibe-coding",
+    "spa",
+    "javascript",
+    "html",
+    "css",
+    "community",
+    "positive-development"
+  ],
+  "author": "BenLive.tv",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benmcnulty/good-vibes.git"
+  },
+  "devDependencies": {
+    "c8": "^8.0.1",
+    "eslint": "^8.57.0",
+    "stylelint": "^16.2.1",
+    "stylelint-config-standard": "^36.0.0",
+    "terser": "^5.27.0",
+    "cssnano": "^6.0.3",
+    "postcss": "^8.4.33",
+    "html-minifier-terser": "^7.2.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
