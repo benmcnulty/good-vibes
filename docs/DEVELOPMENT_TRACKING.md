@@ -26,6 +26,14 @@ This guide describes how tasks and progress are tracked in the Good Vibes projec
 
 Checkboxes allow progress to be tracked over multiple commits or pull requests. Finished items can be checked off and dated if desired.
 
+## Task Log
+
+- [x] **Module 1: Core Layout**
+  - index.html, styles.css, and script.js created
+  - Header, footer, navigation, and base styling implemented (`a45f8ee`)
+- [ ] **Module 2: Introduction Section**
+  - Add introduction content and section-specific styles
+
 ## Best Practices
 
 - Keep each entry short and clear so it is easy for any agent to continue the work.
