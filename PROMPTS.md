@@ -162,6 +162,7 @@ Instructions:
 Keep the roadmap and tracking documentation fully aligned with the current state of the project.
 ```
 
+
 ## Articles Section Implementation Prompt for Claude Code
 
 **Prompt for Claude Code:**  
@@ -183,4 +184,164 @@ Instructions:
 - Ensure changes remain scoped, modular, and easy to extend in future iterations.
 
 Keep the implementation clean, clear, and aligned with the modular vibe coding approach.
+```
+
+
+## Post-Articles Section Review Prompt for Codex
+
+**Prompt for Codex:**  
+```
+Please continue in your role as the planning and roadmap manager for the **Good Vibes** project.
+
+Context:
+- Claude Code has completed the implementation of **Module 4: Articles Section** as defined in the roadmap.
+- The new section includes semantic HTML, consistent CSS styling, placeholder article items, and optional notes for dynamic content loading.
+- This work should align with the modular design approach and integrate cleanly with the Core Layout, Introduction, and Repositories sections.
+
+Instructions:
+- Review the committed Articles Section for alignment with the roadmap and development tracking.
+- Update `docs/ROADMAP.md` and `docs/DEVELOPMENT_TRACKING.md` as needed to reflect this new module’s completion and any adjustments.
+- Note any structural refinements or best practices to inform future enhancements or additional sections.
+- Confirm that the modular scope and agent responsibilities remain aligned with `AGENTS.md`, `CLAUDE.md`, and `.github/copilot-instructions.md`.
+- Keep all planning documents accurate, clear, and actionable for the next phases.
+
+Maintain consistency and clarity as you integrate this milestone into the living roadmap.
+```
+
+## Core Utilities and Helpers Implementation Prompt for Claude Code
+
+**Prompt for Claude Code:**  
+```
+Please continue in your role as development agent for the **Good Vibes** project and proceed with the next module according to the approved roadmap.
+
+Context:
+- This task focuses on **Module 5: Core Utilities and Helpers** as defined in `docs/ROADMAP.md`.
+- This module provides any reusable helper functions, utility scripts, or common JavaScript snippets that support the SPA’s modular structure.
+- These utilities may include tasks like DOM selection helpers, simple toggle logic, or placeholder logic for future dynamic content.
+
+Instructions:
+- Develop clear, reusable utility scripts in JavaScript.
+- Place utilities in an organized location within the repository structure.
+- Add inline comments to explain each helper’s purpose and example usage.
+- Keep utilities simple and scoped to immediate project needs — no unnecessary complexity.
+- Ensure that the helpers align with existing modules and can support future dynamic data if needed.
+- Follow the standards and conventions defined in `CLAUDE.md` and coordinate with Codex and Copilot as appropriate.
+- Maintain clarity and modularity to ensure helpers are easy to update or expand.
+
+Focus on simplicity, clarity, and maintainability as you implement these core utilities.
+```
+
+
+## Post-Utilities and Helpers Review Prompt for Codex
+
+**Prompt for Codex:**  
+```
+Please continue in your role as the planning and roadmap manager for the **Good Vibes** project.
+
+Context:
+- Claude Code has completed the implementation of **Module 5: Core Utilities and Helpers** as defined in the roadmap.
+- The new utilities include reusable helper functions, small scripts, or snippets that support the modular structure of the SPA.
+- This work should align with the style, structure, and coding conventions already established in previous modules.
+
+Instructions:
+- Review the committed Core Utilities and Helpers for alignment with the existing roadmap and development tracking.
+- Update `docs/ROADMAP.md` and `docs/DEVELOPMENT_TRACKING.md` as needed to reflect this module’s addition and any structural improvements.
+- Confirm that all helpers are scoped properly, support current and future modules, and follow the maintainable modular approach.
+- Note any patterns or conventions that should guide future utilities or refactors.
+- Keep all planning and tracking documents clear, modular, and actionable for the next development steps.
+- Ensure alignment with `AGENTS.md`, `CLAUDE.md`, and `.github/copilot-instructions.md`.
+
+Maintain accuracy and cohesion as you evolve the roadmap for the next phases of the project.
+```
+
+
+## Build and Testing Setup Implementation Prompt for Claude Code
+
+**Prompt for Claude Code:**  
+```
+Please continue in your role as development agent for the **Good Vibes** project and proceed with the next module according to the updated roadmap.
+
+Context:
+- This task focuses on **Module 6: Build and Testing Setup** as defined in `docs/ROADMAP.md`.
+- This module establishes a simple, maintainable structure for building and testing the SPA’s HTML, CSS, and JavaScript components.
+- This setup should align with the project’s minimal tooling approach and the style conventions already implemented.
+
+Instructions:
+- Implement any basic build scripts if needed (for example, simple bundling or minification, if appropriate).
+- Add lightweight test files or placeholders showing how core components can be tested in the future.
+- Include clear inline comments explaining how the build and test pieces fit into the overall repo.
+- Keep this setup simple and scoped — no unnecessary complexity or heavy tooling.
+- Ensure that the structure supports future expansion if more testing or build steps are added.
+- Follow all standards defined in `CLAUDE.md` and coordinate with Codex and Copilot as appropriate.
+- Maintain clarity and modularity to keep the repository well-organized and easy to evolve.
+
+Focus on maintainability, simplicity, and clear documentation as you implement this setup.
+```
+
+
+## Final Project Review and Retrospective Prompt for Codex
+
+**Prompt for Codex:**  
+```
+Please continue in your role as the planning and roadmap manager for the **Good Vibes** project and complete a final review and retrospective for this development cycle.
+
+Context:
+- All six modules defined in the roadmap have been implemented and integrated into the repository.
+- Each section reflects the modular, maintainable design approach established at project kickoff.
+- The project was developed collaboratively by the AI agents Codex, Claude Code, and GitHub Copilot.
+
+Instructions:
+- Review the entire `docs/ROADMAP.md` and `docs/DEVELOPMENT_TRACKING.md` to ensure they fully reflect the completed state of the project.
+- Document a clear retrospective section summarizing lessons learned, strengths of the current vibe coding workflow, and any points for improvement.
+- Add notes or recommendations for a potential future phase (Version 2) that may include dynamic data loading, expanded testing, or other enhancements.
+- Verify that all documentation aligns with `AGENTS.md`, `CLAUDE.md`, and `.github/copilot-instructions.md` to maintain clarity of agent responsibilities.
+- Ensure all roadmap tasks are marked complete, and the documents remain well-organized for future reference.
+
+Keep the final documentation clear, concise, and aligned with the Good Vibes project’s modular, AI-supported development ethos.
+```
+
+## Final Linting, Testing, and Retrospective Prompt for Claude Code
+
+**Prompt for Claude Code:**  
+```
+Please continue in your role as development agent for the **Good Vibes** project and complete this final cycle to ensure the project’s technical quality and closure.
+
+Context:
+- Codex’s final review identified outstanding linting errors and warnings that must be resolved.
+- The build and testing setup (Module 6) is in place but test coverage is minimal.
+- A clean, maintainable state is required for the end of this development cycle.
+
+Instructions:
+- Review the entire codebase for lint errors and warnings. Resolve all issues across HTML, CSS, and JavaScript files.
+- Expand the test coverage where practical — focus on utilities, helpers, and reusable components.
+- Automate linting and tests where feasible, e.g., by adding or updating any simple CI workflows if appropriate.
+- Add clear inline comments explaining any test cases or tricky fixes.
+- Once technical fixes are complete, write a concise retrospective from Claude Code’s perspective summarizing:
+  - Lessons learned during implementation.
+  - Observations on code quality and maintainability.
+  - Recommendations for Version 2 development.
+- Ensure all updates follow the standards in `CLAUDE.md` and coordinate with Codex and Copilot roles as described.
+
+Focus on leaving the codebase clean, maintainable, well-tested, and ready for future vibe coding iterations.
+```
+
+## Publish Retrospective and Final Documentation Wrap-Up Prompt for Claude Code
+
+**Prompt for Claude Code:**  
+```
+Please continue in your role as development agent for the **Good Vibes** project and complete this final wrap-up task.
+
+Context:
+- Your retrospective has been provided interactively but should now be formally recorded for future reference.
+- The project is ready for version tagging or pausing until the next development cycle.
+
+Instructions:
+- Format and publish your full retrospective as a new `Retrospective.md` file in the root of the repository.
+- Ensure the document is clear, well-structured, and easy to read.
+- Update `README.md` with a brief summary line that points to the published retrospective.
+- If appropriate, update any other relevant documentation (e.g., `docs/ROADMAP.md`) to note that the current development cycle is complete.
+- Confirm that all files are consistent with the modular, maintainable vibe coding approach.
+- Follow documentation standards as described in `CLAUDE.md`.
+
+Focus on clarity, professionalism, and maintainability as you close out this project stage.
 ```
