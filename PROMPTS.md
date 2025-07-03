@@ -117,3 +117,26 @@ Instructions:
 
 Ensure the planning documents remain accurate and actionable as development continues.
 ```
+
+## GitHub Repositories Listing Implementation Prompt for Claude Code
+
+**Prompt for Claude Code:**  
+```
+Please continue in your role as development agent for the **Good Vibes** project and proceed with the next module according to the approved roadmap.
+
+Context:
+- This task focuses on **Module 3: GitHub Repositories Listing** as defined in `docs/ROADMAP.md`.
+- The section will display a dynamic or static list of GitHub repositories related to vibe coding projects.
+- It should be linked from the global navigation and follow the layout established by the Core Layout and Introduction Section.
+
+Instructions:
+- Develop the HTML structure for the GitHub Repositories Listing Section using clear, semantic markup.
+- Style the section with CSS for visual consistency with the rest of the SPA.
+- Include placeholder repository items to illustrate the expected layout (e.g., name, description, link).
+- If appropriate, include minimal JavaScript or pseudo-code comments to show how dynamic data could be loaded in the future.
+- Use clear inline comments to explain the structure and logic where needed.
+- Follow coding standards and conventions defined in `CLAUDE.md` and coordinate with Codex and Copilot as described.
+- Keep changes scoped and maintainable, ensuring the repository structure remains organized for modular updates.
+
+Keep the implementation clean, modular, and aligned with the vibe coding approach.
+```
