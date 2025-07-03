@@ -186,6 +186,7 @@ Instructions:
 Keep the implementation clean, clear, and aligned with the modular vibe coding approach.
 ```
 
+
 ## Post-Articles Section Review Prompt for Codex
 
 **Prompt for Codex:**  
@@ -205,4 +206,27 @@ Instructions:
 - Keep all planning documents accurate, clear, and actionable for the next phases.
 
 Maintain consistency and clarity as you integrate this milestone into the living roadmap.
+```
+
+## Core Utilities and Helpers Implementation Prompt for Claude Code
+
+**Prompt for Claude Code:**  
+```
+Please continue in your role as development agent for the **Good Vibes** project and proceed with the next module according to the approved roadmap.
+
+Context:
+- This task focuses on **Module 5: Core Utilities and Helpers** as defined in `docs/ROADMAP.md`.
+- This module provides any reusable helper functions, utility scripts, or common JavaScript snippets that support the SPA’s modular structure.
+- These utilities may include tasks like DOM selection helpers, simple toggle logic, or placeholder logic for future dynamic content.
+
+Instructions:
+- Develop clear, reusable utility scripts in JavaScript.
+- Place utilities in an organized location within the repository structure.
+- Add inline comments to explain each helper’s purpose and example usage.
+- Keep utilities simple and scoped to immediate project needs — no unnecessary complexity.
+- Ensure that the helpers align with existing modules and can support future dynamic data if needed.
+- Follow the standards and conventions defined in `CLAUDE.md` and coordinate with Codex and Copilot as appropriate.
+- Maintain clarity and modularity to ensure helpers are easy to update or expand.
+
+Focus on simplicity, clarity, and maintainability as you implement these core utilities.
 ```
