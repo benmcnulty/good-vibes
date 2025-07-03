@@ -49,6 +49,27 @@ Checkboxes allow progress to be tracked over multiple commits or pull requests. 
   - Added GitHub Actions CI/CD pipeline for automated testing
   - Validated build process with 36.6% size reduction
   - Created formal development retrospective document
+- [ ] **Module 7: Dynamic GitHub Repository Loading**
+  - Implement `githubService.js` for API access
+  - Add caching and offline fallback
+  - Integrate loading/error states and tests
+- [ ] **Module 8: Articles Data Integration**
+  - Choose data source and fetch articles
+  - Add safe HTML conversion and retry logic
+  - Provide sample dynamic content
+- [ ] **Module 9: Interactivity & UX Enhancements**
+  - Smooth scrolling and active link styling
+  - Scroll-to-top button and dark mode toggle
+  - Accessibility improvements for navigation
+- [ ] **Module 10: Testing & Build Refinements**
+  - Extend unit tests and add E2E framework
+  - Integrate Prettier and update build scripts
+- [ ] **Module 11: Responsive Styling Updates**
+  - Audit breakpoints and refine mobile layouts
+  - Test in multiple browsers
+- [ ] **Module 12: Documentation & Workflow**
+  - Update roadmap and tracking guides
+  - Document API keys and new features in README
 ## Best Practices
 
 - Keep each entry short and clear so it is easy for any agent to continue the work.

@@ -89,3 +89,7 @@ Future work could introduce dynamic data loading and broader testing:
 - Integrate a small state management layer for more complex interactions.
 - Explore deployment automation and performance monitoring.
 
+## Sprint 2 Plan
+
+A detailed sprint outline for modules 7–12 is provided in [ROADMAP-2.md](../ROADMAP-2.md).
+

@@ -28,11 +28,14 @@ The planning and tracking documents live in the [docs](docs/) directory:
 
 - [Good Vibes Roadmap](docs/ROADMAP.md)
 - [Development Tracking Guide](docs/DEVELOPMENT_TRACKING.md)
+- [Sprint 2 Plan](ROADMAP-2.md)
 
 These files are updated regularly by the AI agents to keep progress transparent and aligned with the project's goals.
 
 ## Development Status
 
-**Current Status:** ✅ **Production Ready** (January 2025)
+**Current Status:** ✅ **Production Ready** (July 2025)
 
 The first development cycle has been completed successfully with all six planned modules implemented. See the full [Development Retrospective](Retrospective.md) for detailed analysis of lessons learned, technical achievements, and recommendations for future development.
+
+Planning for the next sprint is outlined in [ROADMAP-2.md](ROADMAP-2.md).
