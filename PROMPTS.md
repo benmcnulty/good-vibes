@@ -52,3 +52,24 @@ Instructions:
 
 Focus on maintainability and clear structure as you move forward with this first core implementation.
 ```
+
+## Post-Implementation Review Prompt for Codex
+
+**Prompt for Codex:**  
+```
+Please act in your role as planning and roadmap manager for the **Good Vibes** project.
+
+Context:
+- Claude Code has completed an implementation task for **Module 1: Core Layout** as defined in the roadmap.
+- The implementation includes the basic HTML skeleton, header, footer, navigation, base CSS, and minimal JavaScript if needed.
+- The work aligns with the modular development structure and coding conventions defined for this project.
+
+Instructions:
+- Review the newly implemented module for consistency with the existing roadmap and development tracking.
+- Update `docs/ROADMAP.md` and `docs/DEVELOPMENT_TRACKING.md` as needed to reflect the current state of the project.
+- Ensure all new information supports clear next steps for upcoming modules.
+- Revise documentation to maintain clear, limited-scope tasks and agent responsibilities.
+- Keep the project structure and documentation aligned with the AI collaboration model described in `AGENTS.md`, `CLAUDE.md`, and `.github/copilot-instructions.md`.
+
+Maintain clear structure and accuracy as you integrate this development milestone into the planning documentation.
+```
