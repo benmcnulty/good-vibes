@@ -21,3 +21,12 @@ This project uses a collaborative AI development approach with three dedicated s
 - **[OpenAI Codex](AGENTS.md)**: Responsible for planning, roadmap management, and high-level project direction.
 - **[Claude Code](CLAUDE.md)**: Responsible for writing code implementations and test coverage.
 - **[GitHub Copilot](.github/copilot-instructions.md)**: Responsible for reviewing commit diffs and pull requests for consistency and style.
+
+## Project Roadmap
+
+The planning and tracking documents live in the [docs](docs/) directory:
+
+- [Good Vibes Roadmap](docs/ROADMAP.md)
+- [Development Tracking Guide](docs/DEVELOPMENT_TRACKING.md)
+
+These files are updated regularly by the AI agents to keep progress transparent and aligned with the project's goals.

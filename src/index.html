@@ -7,17 +7,208 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>BenLive.tv - Good Vibes</h1>
+    <!-- Main site header with navigation -->
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">BenLive.tv - Good Vibes</h1>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="#introduction" class="nav-link active" aria-current="page">Introduction</a></li>
+                    <li><a href="#repositories" class="nav-link">GitHub Repositories</a></li>
+                    <li><a href="#articles" class="nav-link">Articles</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <main>
-        <section id="welcome">
-            <h2>Welcome to Good Vibes</h2>
-        </section>
+
+    <!-- Main content area for dynamic sections -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Introduction Section -->
+            <section id="introduction" class="content-section active">
+                <article class="intro-content">
+                    <header class="intro-header">
+                        <h2>Welcome to Good Vibes</h2>
+                        <p class="intro-tagline">Where vibe coding meets creative expression</p>
+                    </header>
+                    
+                    <div class="intro-body">
+                        <div class="intro-mission">
+                            <h3>Our Mission</h3>
+                            <p>Good Vibes is a project dedicated to exploring the intersection of positive energy, creative coding, and community building. We believe that great software emerges from a foundation of good vibes, collaborative spirit, and genuine passion for craft.</p>
+                        </div>
+                        
+                        <div class="intro-philosophy">
+                            <h3>The Vibe Coding Philosophy</h3>
+                            <p>Vibe coding isn't just about writing code—it's about creating an environment where developers can thrive, express creativity, and build meaningful connections. It's about maintaining a positive mindset while tackling complex problems and celebrating the journey as much as the destination.</p>
+                        </div>
+                        
+                        <div class="intro-features">
+                            <h3>What You'll Find Here</h3>
+                            <ul class="features-list">
+                                <li class="feature-item">
+                                    <strong>Repository Showcase:</strong> Explore our collection of projects that embody the vibe coding philosophy
+                                </li>
+                                <li class="feature-item">
+                                    <strong>Articles & Insights:</strong> Read about our journey, lessons learned, and thoughts on positive development practices
+                                </li>
+                                <li class="feature-item">
+                                    <strong>Community Spirit:</strong> Join a growing community of developers who prioritize both technical excellence and positive vibes
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="intro-cta">
+                            <h3>Join the Journey</h3>
+                            <p>Whether you're a seasoned developer or just starting your coding journey, Good Vibes welcomes you. Let's build something amazing together, one positive line of code at a time.</p>
+                            <div class="cta-buttons">
+                                <a href="#repositories" class="cta-button primary">Explore Repositories</a>
+                                <a href="#articles" class="cta-button secondary">Read Articles</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- GitHub Repositories Section -->
+            <section id="repositories" class="content-section">
+                <div class="repos-header">
+                    <h2>GitHub Repositories</h2>
+                    <p class="repos-intro">Explore our collection of vibe coding projects and contributions to the developer community.</p>
+                </div>
+                
+                <!-- Repository listing container for dynamic content -->
+                <div class="repos-container" id="repos-container">
+                    <!-- Static placeholder repositories - will be replaced with dynamic data -->
+                    <article class="repo-card">
+                        <header class="repo-header">
+                            <h3 class="repo-name">
+                                <a href="https://github.com/benmcnulty/good-vibes" target="_blank" rel="noopener noreferrer">
+                                    good-vibes
+                                </a>
+                            </h3>
+                            <div class="repo-meta">
+                                <span class="repo-language">JavaScript</span>
+                                <span class="repo-stars">⭐ 42</span>
+                            </div>
+                        </header>
+                        <p class="repo-description">
+                            A single-page application showcasing the vibe coding philosophy and community projects. Built with vanilla HTML, CSS, and JavaScript.
+                        </p>
+                        <footer class="repo-footer">
+                            <div class="repo-topics">
+                                <span class="topic-tag">vibe-coding</span>
+                                <span class="topic-tag">spa</span>
+                                <span class="topic-tag">javascript</span>
+                            </div>
+                            <time class="repo-updated" datetime="2025-01-03">Updated 3 days ago</time>
+                        </footer>
+                    </article>
+                    
+                    <article class="repo-card">
+                        <header class="repo-header">
+                            <h3 class="repo-name">
+                                <a href="https://github.com/benmcnulty/vibe-utils" target="_blank" rel="noopener noreferrer">
+                                    vibe-utils
+                                </a>
+                            </h3>
+                            <div class="repo-meta">
+                                <span class="repo-language">TypeScript</span>
+                                <span class="repo-stars">⭐ 28</span>
+                            </div>
+                        </header>
+                        <p class="repo-description">
+                            Utility functions and helpers for maintaining positive energy in code. Includes mood tracking, team collaboration tools, and productivity enhancers.
+                        </p>
+                        <footer class="repo-footer">
+                            <div class="repo-topics">
+                                <span class="topic-tag">utilities</span>
+                                <span class="topic-tag">typescript</span>
+                                <span class="topic-tag">productivity</span>
+                            </div>
+                            <time class="repo-updated" datetime="2025-01-01">Updated 5 days ago</time>
+                        </footer>
+                    </article>
+                    
+                    <article class="repo-card">
+                        <header class="repo-header">
+                            <h3 class="repo-name">
+                                <a href="https://github.com/benmcnulty/positive-patterns" target="_blank" rel="noopener noreferrer">
+                                    positive-patterns
+                                </a>
+                            </h3>
+                            <div class="repo-meta">
+                                <span class="repo-language">Python</span>
+                                <span class="repo-stars">⭐ 67</span>
+                            </div>
+                        </header>
+                        <p class="repo-description">
+                            Design patterns and architectural approaches that promote team happiness and code maintainability. Includes examples and best practices.
+                        </p>
+                        <footer class="repo-footer">
+                            <div class="repo-topics">
+                                <span class="topic-tag">design-patterns</span>
+                                <span class="topic-tag">python</span>
+                                <span class="topic-tag">best-practices</span>
+                            </div>
+                            <time class="repo-updated" datetime="2024-12-28">Updated 1 week ago</time>
+                        </footer>
+                    </article>
+                    
+                    <article class="repo-card">
+                        <header class="repo-header">
+                            <h3 class="repo-name">
+                                <a href="https://github.com/benmcnulty/vibe-cli" target="_blank" rel="noopener noreferrer">
+                                    vibe-cli
+                                </a>
+                            </h3>
+                            <div class="repo-meta">
+                                <span class="repo-language">Rust</span>
+                                <span class="repo-stars">⭐ 15</span>
+                            </div>
+                        </header>
+                        <p class="repo-description">
+                            Command-line interface for vibe coding workflows. Includes mood tracking, project health checks, and team collaboration features.
+                        </p>
+                        <footer class="repo-footer">
+                            <div class="repo-topics">
+                                <span class="topic-tag">cli</span>
+                                <span class="topic-tag">rust</span>
+                                <span class="topic-tag">workflow</span>
+                            </div>
+                            <time class="repo-updated" datetime="2024-12-15">Updated 3 weeks ago</time>
+                        </footer>
+                    </article>
+                </div>
+                
+                <!-- Loading state placeholder for future dynamic implementation -->
+                <div class="repos-loading" id="repos-loading" role="status" aria-live="polite">
+                    <div class="loading-spinner"></div>
+                    <p>Loading repositories...</p>
+                </div>
+                
+                <!-- Error state placeholder for future dynamic implementation -->
+                <div class="repos-error" id="repos-error">
+                    <p>Unable to load repositories at this time. Please try again later.</p>
+                    <button class="retry-button" type="button" id="retry-repos-btn">Retry</button>
+                </div>
+            </section>
+
+            <!-- Articles Section -->
+            <section id="articles" class="content-section">
+                <h2>Articles</h2>
+                <p>Articles about the vibe coding journey will be displayed here.</p>
+            </section>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2025 BenLive.tv - Good Vibes. All rights reserved.</p>
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 BenLive.tv - Good Vibes. All rights reserved.</p>
+        </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
