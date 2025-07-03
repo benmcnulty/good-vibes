@@ -278,6 +278,7 @@ Instructions:
 Focus on maintainability, simplicity, and clear documentation as you implement this setup.
 ```
 
+
 ## Final Project Review and Retrospective Prompt for Codex
 
 **Prompt for Codex:**  
@@ -297,4 +298,29 @@ Instructions:
 - Ensure all roadmap tasks are marked complete, and the documents remain well-organized for future reference.
 
 Keep the final documentation clear, concise, and aligned with the Good Vibes project’s modular, AI-supported development ethos.
+```
+
+## Final Linting, Testing, and Retrospective Prompt for Claude Code
+
+**Prompt for Claude Code:**  
+```
+Please continue in your role as development agent for the **Good Vibes** project and complete this final cycle to ensure the project’s technical quality and closure.
+
+Context:
+- Codex’s final review identified outstanding linting errors and warnings that must be resolved.
+- The build and testing setup (Module 6) is in place but test coverage is minimal.
+- A clean, maintainable state is required for the end of this development cycle.
+
+Instructions:
+- Review the entire codebase for lint errors and warnings. Resolve all issues across HTML, CSS, and JavaScript files.
+- Expand the test coverage where practical — focus on utilities, helpers, and reusable components.
+- Automate linting and tests where feasible, e.g., by adding or updating any simple CI workflows if appropriate.
+- Add clear inline comments explaining any test cases or tricky fixes.
+- Once technical fixes are complete, write a concise retrospective from Claude Code’s perspective summarizing:
+  - Lessons learned during implementation.
+  - Observations on code quality and maintainability.
+  - Recommendations for Version 2 development.
+- Ensure all updates follow the standards in `CLAUDE.md` and coordinate with Codex and Copilot roles as described.
+
+Focus on leaving the codebase clean, maintainable, well-tested, and ready for future vibe coding iterations.
 ```
