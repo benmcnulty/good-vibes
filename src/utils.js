@@ -108,7 +108,7 @@ function escapeHTML(str) {
     if (typeof str !== 'string') {
         return str;
     }
-    return str.replace(/[&<>"'`=/]/g, s => ({
+    const htmlEscapeMap = {
         '&': '&amp;',
         '<': '&lt;',
         '>': '&gt;',
