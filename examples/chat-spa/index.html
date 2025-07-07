@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat SPA Example</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; }
+        header { background: #f0f0f0; padding: 1rem; }
+        nav a { margin-right: 1rem; text-decoration: none; color: #333; }
+        nav a.active { font-weight: bold; }
+        section { display: none; padding: 1rem; }
+        section.active { display: block; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="nav-link active" aria-current="page">Home</a>
+            <a href="#section" class="nav-link">Chat</a>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="active">
+            <h1>Chat SPA Example</h1>
+            <p>A realtime chat demo built with vibe coding.</p>
+        </section>
+        <section id="section">
+            <h2>Chat</h2>
+            <p>Messages will appear here.</p>
+        </section>
+    </main>
+    <script>
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const target = this.getAttribute('href').substring(1);
+                document.querySelectorAll('section').forEach(sec => {
+                    sec.classList.toggle('active', sec.id === target);
+                    sec.setAttribute('aria-hidden', sec.id !== target);
+                });
+                document.querySelectorAll('.nav-link').forEach(nav => {
+                    const active = nav.getAttribute('href') === '#' + target;
+                    nav.classList.toggle('active', active);
+                    if (active) { nav.setAttribute('aria-current', 'page'); }
+                    else { nav.removeAttribute('aria-current'); }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

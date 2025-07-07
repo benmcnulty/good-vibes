@@ -123,7 +123,7 @@ describe('Content Generation Utilities', () => {
 
             assert.strictEqual(
                 div.innerHTML,
-                '<div>&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</div>'
+                '<div>&lt;script&gt;alert("xss")&lt;/script&gt;</div>'
             );
         });
 
