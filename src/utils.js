@@ -117,7 +117,9 @@ function escapeHTML(str) {
         '`': '&#96;',
         '=': '&#61;',
         '/': '&#47;'
-    })[s]);
+    };
+
+    return str.replace(/[&<>"'`=/]/g, s => htmlEscapeMap[s]);
 }
 
 /**

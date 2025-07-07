@@ -3,49 +3,1080 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather SPA Example</title>
+    <title>Weather Dashboard - Good Vibes Example</title>
     <style>
-        body { font-family: sans-serif; margin: 0; }
-        header { background: #f0f0f0; padding: 1rem; }
-        nav a { margin-right: 1rem; text-decoration: none; color: #333; }
-        nav a.active { font-weight: bold; }
-        section { display: none; padding: 1rem; }
-        section.active { display: block; }
+        :root {
+            --primary-color: #3b82f6;
+            --primary-light: #93c5fd;
+            --secondary-color: #f59e0b;
+            --accent-color: #10b981;
+            --text-color: #1f2937;
+            --text-light: #6b7280;
+            --bg-color: #ffffff;
+            --bg-light: #f8fafc;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --sunny-color: #f59e0b;
+            --cloudy-color: #6b7280;
+            --rainy-color: #3b82f6;
+            --snowy-color: #e5e7eb;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--bg-light), var(--bg-color));
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .site-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        main {
+            min-height: calc(100vh - 200px);
+            padding: 2rem 0;
+        }
+        
+        section {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, var(--bg-light), var(--bg-color));
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 2rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--bg-color);
+            box-shadow: var(--shadow);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-button:hover {
+            background: var(--primary-light);
+            transform: translateY(-50%) scale(1.05);
+        }
+        
+        .current-weather {
+            background: var(--bg-color);
+            border-radius: 2rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .current-weather::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .current-weather-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .current-location {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .current-temp {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .weather-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .weather-description {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            text-transform: capitalize;
+        }
+        
+        .weather-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .weather-detail {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 1rem;
+            text-align: center;
+        }
+        
+        .weather-detail-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+        
+        .weather-detail-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .forecast-container {
+            background: var(--bg-color);
+            border-radius: 2rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .forecast-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--text-color);
+        }
+        
+        .forecast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .forecast-item {
+            background: var(--bg-light);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .forecast-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        
+        .forecast-day {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .forecast-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .forecast-temp {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .forecast-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-transform: capitalize;
+        }
+        
+        .cities-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .city-card {
+            background: var(--bg-color);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .city-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .city-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+        
+        .city-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .city-temp {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .city-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            text-transform: capitalize;
+        }
+        
+        .city-icon {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            opacity: 0.7;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error-message {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .quick-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .quick-action {
+            background: var(--bg-color);
+            border: 2px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+        
+        .quick-action:hover {
+            border-color: var(--primary-color);
+            background: var(--primary-light);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .current-temp {
+                font-size: 3rem;
+            }
+            
+            .weather-icon {
+                font-size: 3rem;
+            }
+            
+            .forecast-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cities-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav {
+                gap: 1rem;
+            }
+            
+            .quick-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <nav>
-            <a href="#home" class="nav-link active" aria-current="page">Home</a>
-            <a href="#section" class="nav-link">Forecast</a>
-        </nav>
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">Weather Dashboard</h1>
+                <nav>
+                    <a href="#home" class="nav-link active" aria-current="page">Home</a>
+                    <a href="#forecast" class="nav-link">7-Day Forecast</a>
+                    <a href="#cities" class="nav-link">Cities</a>
+                </nav>
+            </div>
+        </div>
     </header>
+    
     <main>
         <section id="home" class="active">
-            <h1>Weather SPA Example</h1>
-            <p>A minimal weather dashboard built with vibe coding.</p>
+            <div class="hero">
+                <div class="container">
+                    <h2 class="hero-title">Weather Dashboard</h2>
+                    <p class="hero-subtitle">Stay informed with real-time weather updates</p>
+                    
+                    <div class="search-container">
+                        <input 
+                            type="text" 
+                            class="search-input" 
+                            placeholder="Enter city name..."
+                            id="citySearch"
+                        >
+                        <button class="search-button" onclick="searchWeather()">Search</button>
+                    </div>
+                    
+                    <div class="quick-actions">
+                        <button class="quick-action" onclick="getCurrentLocation()">📍 Use My Location</button>
+                        <button class="quick-action" onclick="loadCityWeather('New York')">🏙️ New York</button>
+                        <button class="quick-action" onclick="loadCityWeather('London')">🌉 London</button>
+                        <button class="quick-action" onclick="loadCityWeather('Tokyo')">🌸 Tokyo</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="current-weather" id="currentWeather">
+                    <div class="current-weather-content">
+                        <div class="current-location">San Francisco, CA</div>
+                        <div class="weather-icon">☀️</div>
+                        <div class="current-temp">72°F</div>
+                        <div class="weather-description">Sunny</div>
+                        
+                        <div class="weather-details">
+                            <div class="weather-detail">
+                                <div class="weather-detail-label">Feels Like</div>
+                                <div class="weather-detail-value">75°F</div>
+                            </div>
+                            <div class="weather-detail">
+                                <div class="weather-detail-label">Humidity</div>
+                                <div class="weather-detail-value">65%</div>
+                            </div>
+                            <div class="weather-detail">
+                                <div class="weather-detail-label">Wind Speed</div>
+                                <div class="weather-detail-value">12 mph</div>
+                            </div>
+                            <div class="weather-detail">
+                                <div class="weather-detail-label">Pressure</div>
+                                <div class="weather-detail-value">30.12 in</div>
+                            </div>
+                            <div class="weather-detail">
+                                <div class="weather-detail-label">Visibility</div>
+                                <div class="weather-detail-value">10 miles</div>
+                            </div>
+                            <div class="weather-detail">
+                                <div class="weather-detail-label">UV Index</div>
+                                <div class="weather-detail-value">6</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <section id="section">
-            <h2>Forecast</h2>
-            <p>Weather data will display here.</p>
+        
+        <section id="forecast">
+            <div class="container">
+                <h2 class="section-title">7-Day Forecast</h2>
+                <p class="section-subtitle">Extended weather outlook for your planning needs</p>
+                
+                <div class="forecast-container">
+                    <div class="forecast-grid" id="forecastGrid">
+                        <div class="forecast-item">
+                            <div class="forecast-day">Today</div>
+                            <div class="forecast-icon">☀️</div>
+                            <div class="forecast-temp">72° / 58°</div>
+                            <div class="forecast-description">Sunny</div>
+                        </div>
+                        
+                        <div class="forecast-item">
+                            <div class="forecast-day">Tomorrow</div>
+                            <div class="forecast-icon">⛅</div>
+                            <div class="forecast-temp">68° / 55°</div>
+                            <div class="forecast-description">Partly Cloudy</div>
+                        </div>
+                        
+                        <div class="forecast-item">
+                            <div class="forecast-day">Wednesday</div>
+                            <div class="forecast-icon">🌧️</div>
+                            <div class="forecast-temp">63° / 52°</div>
+                            <div class="forecast-description">Light Rain</div>
+                        </div>
+                        
+                        <div class="forecast-item">
+                            <div class="forecast-day">Thursday</div>
+                            <div class="forecast-icon">🌦️</div>
+                            <div class="forecast-temp">66° / 51°</div>
+                            <div class="forecast-description">Scattered Showers</div>
+                        </div>
+                        
+                        <div class="forecast-item">
+                            <div class="forecast-day">Friday</div>
+                            <div class="forecast-icon">☁️</div>
+                            <div class="forecast-temp">64° / 49°</div>
+                            <div class="forecast-description">Cloudy</div>
+                        </div>
+                        
+                        <div class="forecast-item">
+                            <div class="forecast-day">Saturday</div>
+                            <div class="forecast-icon">🌤️</div>
+                            <div class="forecast-temp">69° / 54°</div>
+                            <div class="forecast-description">Partly Sunny</div>
+                        </div>
+                        
+                        <div class="forecast-item">
+                            <div class="forecast-day">Sunday</div>
+                            <div class="forecast-icon">☀️</div>
+                            <div class="forecast-temp">74° / 59°</div>
+                            <div class="forecast-description">Sunny</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="cities">
+            <div class="container">
+                <h2 class="section-title">Popular Cities</h2>
+                <p class="section-subtitle">Quick access to weather in major cities worldwide</p>
+                
+                <div class="cities-container">
+                    <div class="city-card" onclick="loadCityWeather('New York')">
+                        <div class="city-icon">🏙️</div>
+                        <div class="city-name">New York</div>
+                        <div class="city-temp">68°F</div>
+                        <div class="city-description">Partly Cloudy</div>
+                    </div>
+                    
+                    <div class="city-card" onclick="loadCityWeather('London')">
+                        <div class="city-icon">🌉</div>
+                        <div class="city-name">London</div>
+                        <div class="city-temp">61°F</div>
+                        <div class="city-description">Overcast</div>
+                    </div>
+                    
+                    <div class="city-card" onclick="loadCityWeather('Tokyo')">
+                        <div class="city-icon">🌸</div>
+                        <div class="city-name">Tokyo</div>
+                        <div class="city-temp">75°F</div>
+                        <div class="city-description">Clear</div>
+                    </div>
+                    
+                    <div class="city-card" onclick="loadCityWeather('Sydney')">
+                        <div class="city-icon">🏖️</div>
+                        <div class="city-name">Sydney</div>
+                        <div class="city-temp">73°F</div>
+                        <div class="city-description">Sunny</div>
+                    </div>
+                    
+                    <div class="city-card" onclick="loadCityWeather('Paris')">
+                        <div class="city-icon">🗼</div>
+                        <div class="city-name">Paris</div>
+                        <div class="city-temp">64°F</div>
+                        <div class="city-description">Light Rain</div>
+                    </div>
+                    
+                    <div class="city-card" onclick="loadCityWeather('Dubai')">
+                        <div class="city-icon">🏜️</div>
+                        <div class="city-name">Dubai</div>
+                        <div class="city-temp">95°F</div>
+                        <div class="city-description">Hot</div>
+                    </div>
+                    
+                    <div class="city-card" onclick="loadCityWeather('Rio de Janeiro')">
+                        <div class="city-icon">🏖️</div>
+                        <div class="city-name">Rio de Janeiro</div>
+                        <div class="city-temp">82°F</div>
+                        <div class="city-description">Tropical</div>
+                    </div>
+                    
+                    <div class="city-card" onclick="loadCityWeather('Mumbai')">
+                        <div class="city-icon">🌆</div>
+                        <div class="city-name">Mumbai</div>
+                        <div class="city-temp">86°F</div>
+                        <div class="city-description">Humid</div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
+    
     <script>
+        // Sample weather data for demonstration
+        const weatherData = {
+            'New York': {
+                location: 'New York, NY',
+                temp: 68,
+                description: 'Partly Cloudy',
+                icon: '⛅',
+                feelsLike: 71,
+                humidity: 72,
+                windSpeed: 8,
+                pressure: 29.95,
+                visibility: 8,
+                uvIndex: 4,
+                forecast: [
+                    { day: 'Today', icon: '⛅', temp: '68° / 55°', description: 'Partly Cloudy' },
+                    { day: 'Tomorrow', icon: '🌧️', temp: '62° / 48°', description: 'Rain' },
+                    { day: 'Wednesday', icon: '☁️', temp: '65° / 52°', description: 'Cloudy' },
+                    { day: 'Thursday', icon: '🌤️', temp: '70° / 57°', description: 'Partly Sunny' },
+                    { day: 'Friday', icon: '☀️', temp: '73° / 60°', description: 'Sunny' },
+                    { day: 'Saturday', icon: '⛅', temp: '71° / 58°', description: 'Partly Cloudy' },
+                    { day: 'Sunday', icon: '🌦️', temp: '66° / 53°', description: 'Showers' }
+                ]
+            },
+            'London': {
+                location: 'London, UK',
+                temp: 61,
+                description: 'Overcast',
+                icon: '☁️',
+                feelsLike: 63,
+                humidity: 78,
+                windSpeed: 12,
+                pressure: 30.02,
+                visibility: 6,
+                uvIndex: 2,
+                forecast: [
+                    { day: 'Today', icon: '☁️', temp: '61° / 48°', description: 'Overcast' },
+                    { day: 'Tomorrow', icon: '🌧️', temp: '58° / 45°', description: 'Rain' },
+                    { day: 'Wednesday', icon: '🌦️', temp: '63° / 50°', description: 'Showers' },
+                    { day: 'Thursday', icon: '⛅', temp: '66° / 52°', description: 'Partly Cloudy' },
+                    { day: 'Friday', icon: '☁️', temp: '64° / 49°', description: 'Cloudy' },
+                    { day: 'Saturday', icon: '🌤️', temp: '68° / 54°', description: 'Partly Sunny' },
+                    { day: 'Sunday', icon: '☀️', temp: '71° / 57°', description: 'Sunny' }
+                ]
+            },
+            'Tokyo': {
+                location: 'Tokyo, Japan',
+                temp: 75,
+                description: 'Clear',
+                icon: '☀️',
+                feelsLike: 78,
+                humidity: 68,
+                windSpeed: 6,
+                pressure: 30.18,
+                visibility: 12,
+                uvIndex: 7,
+                forecast: [
+                    { day: 'Today', icon: '☀️', temp: '75° / 62°', description: 'Clear' },
+                    { day: 'Tomorrow', icon: '🌤️', temp: '73° / 60°', description: 'Partly Sunny' },
+                    { day: 'Wednesday', icon: '⛅', temp: '71° / 58°', description: 'Partly Cloudy' },
+                    { day: 'Thursday', icon: '🌧️', temp: '68° / 55°', description: 'Rain' },
+                    { day: 'Friday', icon: '🌦️', temp: '70° / 57°', description: 'Showers' },
+                    { day: 'Saturday', icon: '☁️', temp: '69° / 56°', description: 'Cloudy' },
+                    { day: 'Sunday', icon: '☀️', temp: '76° / 63°', description: 'Sunny' }
+                ]
+            },
+            'Sydney': {
+                location: 'Sydney, Australia',
+                temp: 73,
+                description: 'Sunny',
+                icon: '☀️',
+                feelsLike: 75,
+                humidity: 55,
+                windSpeed: 14,
+                pressure: 30.25,
+                visibility: 15,
+                uvIndex: 8,
+                forecast: [
+                    { day: 'Today', icon: '☀️', temp: '73° / 60°', description: 'Sunny' },
+                    { day: 'Tomorrow', icon: '🌤️', temp: '71° / 58°', description: 'Partly Sunny' },
+                    { day: 'Wednesday', icon: '⛅', temp: '68° / 55°', description: 'Partly Cloudy' },
+                    { day: 'Thursday', icon: '☀️', temp: '75° / 62°', description: 'Sunny' },
+                    { day: 'Friday', icon: '🌤️', temp: '72° / 59°', description: 'Partly Sunny' },
+                    { day: 'Saturday', icon: '☁️', temp: '67° / 54°', description: 'Cloudy' },
+                    { day: 'Sunday', icon: '🌦️', temp: '65° / 52°', description: 'Showers' }
+                ]
+            },
+            'Paris': {
+                location: 'Paris, France',
+                temp: 64,
+                description: 'Light Rain',
+                icon: '🌧️',
+                feelsLike: 66,
+                humidity: 82,
+                windSpeed: 9,
+                pressure: 29.88,
+                visibility: 7,
+                uvIndex: 3,
+                forecast: [
+                    { day: 'Today', icon: '🌧️', temp: '64° / 51°', description: 'Light Rain' },
+                    { day: 'Tomorrow', icon: '🌦️', temp: '62° / 49°', description: 'Showers' },
+                    { day: 'Wednesday', icon: '☁️', temp: '66° / 53°', description: 'Cloudy' },
+                    { day: 'Thursday', icon: '⛅', temp: '69° / 56°', description: 'Partly Cloudy' },
+                    { day: 'Friday', icon: '🌤️', temp: '71° / 58°', description: 'Partly Sunny' },
+                    { day: 'Saturday', icon: '☀️', temp: '74° / 61°', description: 'Sunny' },
+                    { day: 'Sunday', icon: '⛅', temp: '72° / 59°', description: 'Partly Cloudy' }
+                ]
+            },
+            'Dubai': {
+                location: 'Dubai, UAE',
+                temp: 95,
+                description: 'Hot',
+                icon: '🌡️',
+                feelsLike: 102,
+                humidity: 45,
+                windSpeed: 11,
+                pressure: 29.97,
+                visibility: 10,
+                uvIndex: 11,
+                forecast: [
+                    { day: 'Today', icon: '🌡️', temp: '95° / 82°', description: 'Hot' },
+                    { day: 'Tomorrow', icon: '☀️', temp: '93° / 80°', description: 'Sunny' },
+                    { day: 'Wednesday', icon: '🌤️', temp: '91° / 78°', description: 'Partly Sunny' },
+                    { day: 'Thursday', icon: '☀️', temp: '94° / 81°', description: 'Sunny' },
+                    { day: 'Friday', icon: '🌡️', temp: '96° / 83°', description: 'Hot' },
+                    { day: 'Saturday', icon: '☀️', temp: '92° / 79°', description: 'Sunny' },
+                    { day: 'Sunday', icon: '⛅', temp: '89° / 76°', description: 'Partly Cloudy' }
+                ]
+            }
+        };
+        
+        // Navigation functionality
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(event) {
                 event.preventDefault();
                 const target = this.getAttribute('href').substring(1);
+                
+                // Switch sections
                 document.querySelectorAll('section').forEach(sec => {
                     sec.classList.toggle('active', sec.id === target);
                     sec.setAttribute('aria-hidden', sec.id !== target);
                 });
+                
+                // Update navigation
                 document.querySelectorAll('.nav-link').forEach(nav => {
                     const active = nav.getAttribute('href') === '#' + target;
                     nav.classList.toggle('active', active);
-                    if (active) { nav.setAttribute('aria-current', 'page'); }
-                    else { nav.removeAttribute('aria-current'); }
+                    if (active) { 
+                        nav.setAttribute('aria-current', 'page'); 
+                    } else { 
+                        nav.removeAttribute('aria-current'); 
+                    }
                 });
             });
+        });
+        
+        // Search functionality
+        function searchWeather() {
+            const cityInput = document.getElementById('citySearch');
+            const cityName = cityInput.value.trim();
+            
+            if (cityName) {
+                loadCityWeather(cityName);
+                cityInput.value = '';
+            }
+        }
+        
+        // Enter key search
+        document.getElementById('citySearch').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                searchWeather();
+            }
+        });
+        
+        // Load weather for a specific city
+        function loadCityWeather(cityName) {
+            const currentWeatherElement = document.getElementById('currentWeather');
+            const forecastGrid = document.getElementById('forecastGrid');
+            
+            // Show loading
+            currentWeatherElement.innerHTML = `
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading weather data...</p>
+                </div>
+            `;
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                const data = weatherData[cityName];
+                
+                if (data) {
+                    // Update current weather
+                    currentWeatherElement.innerHTML = `
+                        <div class="current-weather-content">
+                            <div class="current-location">${data.location}</div>
+                            <div class="weather-icon">${data.icon}</div>
+                            <div class="current-temp">${data.temp}°F</div>
+                            <div class="weather-description">${data.description}</div>
+                            
+                            <div class="weather-details">
+                                <div class="weather-detail">
+                                    <div class="weather-detail-label">Feels Like</div>
+                                    <div class="weather-detail-value">${data.feelsLike}°F</div>
+                                </div>
+                                <div class="weather-detail">
+                                    <div class="weather-detail-label">Humidity</div>
+                                    <div class="weather-detail-value">${data.humidity}%</div>
+                                </div>
+                                <div class="weather-detail">
+                                    <div class="weather-detail-label">Wind Speed</div>
+                                    <div class="weather-detail-value">${data.windSpeed} mph</div>
+                                </div>
+                                <div class="weather-detail">
+                                    <div class="weather-detail-label">Pressure</div>
+                                    <div class="weather-detail-value">${data.pressure} in</div>
+                                </div>
+                                <div class="weather-detail">
+                                    <div class="weather-detail-label">Visibility</div>
+                                    <div class="weather-detail-value">${data.visibility} miles</div>
+                                </div>
+                                <div class="weather-detail">
+                                    <div class="weather-detail-label">UV Index</div>
+                                    <div class="weather-detail-value">${data.uvIndex}</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Update forecast
+                    forecastGrid.innerHTML = data.forecast.map(day => `
+                        <div class="forecast-item">
+                            <div class="forecast-day">${day.day}</div>
+                            <div class="forecast-icon">${day.icon}</div>
+                            <div class="forecast-temp">${day.temp}</div>
+                            <div class="forecast-description">${day.description}</div>
+                        </div>
+                    `).join('');
+                    
+                } else {
+                    // Escape cityName to prevent XSS
+                    function escapeHTML(str) {
+                        return str.replace(/[&<>"'`=\/]/g, function (s) {
+                            return ({
+                                '&': '&amp;',
+                                '<': '&lt;',
+                                '>': '&gt;',
+                                '"': '&quot;',
+                                "'": '&#39;',
+                                '`': '&#96;',
+                                '=': '&#61;',
+                                '/': '&#47;'
+                            })[s];
+                        });
+                    }
+                    currentWeatherElement.innerHTML = `
+                        <div class="current-weather-content">
+                            <div class="error-message">
+                                Weather data not available for "${escapeHTML(cityName)}". Please try another city.
+                            </div>
+                        </div>
+                    `;
+                }
+            }, 1000);
+        }
+        
+        // Get current location weather
+        function getCurrentLocation() {
+            if (navigator.geolocation) {
+                const currentWeatherElement = document.getElementById('currentWeather');
+                
+                currentWeatherElement.innerHTML = `
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        <p>Getting your location...</p>
+                    </div>
+                `;
+                
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        // Simulate location-based weather (using San Francisco as default)
+                        setTimeout(() => {
+                            currentWeatherElement.innerHTML = `
+                                <div class="current-weather-content">
+                                    <div class="current-location">Your Location</div>
+                                    <div class="weather-icon">☀️</div>
+                                    <div class="current-temp">72°F</div>
+                                    <div class="weather-description">Sunny</div>
+                                    
+                                    <div class="weather-details">
+                                        <div class="weather-detail">
+                                            <div class="weather-detail-label">Feels Like</div>
+                                            <div class="weather-detail-value">75°F</div>
+                                        </div>
+                                        <div class="weather-detail">
+                                            <div class="weather-detail-label">Humidity</div>
+                                            <div class="weather-detail-value">65%</div>
+                                        </div>
+                                        <div class="weather-detail">
+                                            <div class="weather-detail-label">Wind Speed</div>
+                                            <div class="weather-detail-value">12 mph</div>
+                                        </div>
+                                        <div class="weather-detail">
+                                            <div class="weather-detail-label">Pressure</div>
+                                            <div class="weather-detail-value">30.12 in</div>
+                                        </div>
+                                        <div class="weather-detail">
+                                            <div class="weather-detail-label">Visibility</div>
+                                            <div class="weather-detail-value">10 miles</div>
+                                        </div>
+                                        <div class="weather-detail">
+                                            <div class="weather-detail-label">UV Index</div>
+                                            <div class="weather-detail-value">6</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }, 1500);
+                    },
+                    (error) => {
+                        currentWeatherElement.innerHTML = `
+                            <div class="current-weather-content">
+                                <div class="error-message">
+                                    Unable to get your location. Please search for a city manually.
+                                </div>
+                            </div>
+                        `;
+                    }
+                );
+            } else {
+                alert('Geolocation is not supported by this browser.');
+            }
+        }
+        
+        // City card click handlers
+        document.querySelectorAll('.city-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const cityName = this.querySelector('.city-name').textContent;
+                loadCityWeather(cityName);
+                
+                // Switch to home section to show the loaded weather
+                document.querySelectorAll('section').forEach(sec => {
+                    sec.classList.toggle('active', sec.id === 'home');
+                    sec.setAttribute('aria-hidden', sec.id !== 'home');
+                });
+                
+                document.querySelectorAll('.nav-link').forEach(nav => {
+                    const active = nav.getAttribute('href') === '#home';
+                    nav.classList.toggle('active', active);
+                    if (active) { 
+                        nav.setAttribute('aria-current', 'page'); 
+                    } else { 
+                        nav.removeAttribute('aria-current'); 
+                    }
+                });
+            });
+        });
+        
+        // Add hover effects for forecast items
+        document.querySelectorAll('.forecast-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Temperature unit toggle (bonus feature)
+        let isCelsius = false;
+        
+        function toggleTemperatureUnit() {
+            isCelsius = !isCelsius;
+            // In a real app, this would convert all temperatures
+            // For demo purposes, we'll just show the concept
+            console.log('Temperature unit toggled to:', isCelsius ? 'Celsius' : 'Fahrenheit');
+        }
+        
+        // Initialize with default animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.animation = 'fadeIn 0.5s ease-in forwards';
         });
     </script>
 </body>

@@ -417,13 +417,15 @@ a:hover {
   font-weight: 600;
 }
 
-.repo-name a {
+.repo-name a,
+.example-name a {
   color: var(--secondary-color);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.repo-name a:hover {
+.repo-name a:hover,
+.example-name a:hover {
   color: var(--primary-color);
   text-decoration: underline;
 }
@@ -686,3 +688,6 @@ a:hover {
     gap: var(--spacing-xs);
   }
 }
+
+/* Examples Section Styles moved to examples.css */
+@import url('./examples.css');
