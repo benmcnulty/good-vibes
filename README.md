@@ -7,8 +7,9 @@ It serves as an open example of a "vibe coding" project — an experimental appr
 
 The site includes:
 - An introduction to vibe coding and this project's purpose.
-- A section listing related GitHub repositories.
+- A dynamic GitHub repository listing powered by the GitHub API.
 - A section for articles about the vibe coding journey, process, and experiments.
+- A suite of interactive Vibe Coding examples demonstrating modern SPA techniques.
 
 🔗 **Live Site:** [benlive.tv/good-vibes](https://benlive.tv/good-vibes)  
 📂 **Repo:** [github.com/benmcnulty/good-vibes](https://github.com/benmcnulty/good-vibes)
