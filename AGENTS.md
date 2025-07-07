@@ -15,6 +15,7 @@ OpenAI Codex acts as the planner and roadmap manager for this project. Codex hel
 - Draft initial outlines for new features or sections.
 - Provide guidance for version control practices, branching strategy, and commit message formats.
 - Maintain alignment with other AI agents (Claude Code and GitHub Copilot).
+- Document dynamic data modules and example projects as they evolve.
 
 ## Best Practices
 
@@ -22,6 +23,7 @@ OpenAI Codex acts as the planner and roadmap manager for this project. Codex hel
 - Reference project-specific tools, frameworks, or style rules as needed.
 - Prioritize simplicity and maintainability.
 - Revise and expand this guide whenever new patterns or lessons emerge.
+- Enforce Prettier formatting alongside ESLint and Stylelint.
 
 ## Related Resources
 
