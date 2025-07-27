@@ -6,6 +6,7 @@ This is the public repository for [benlive.tv/good-vibes](https://benlive.tv/goo
 It serves as an open example of a "vibe coding" project — an experimental approach to building web pages that reflect spontaneous, creative coding sessions.
 
 The site includes:
+
 - An introduction to vibe coding and this project's purpose.
 - A dynamic GitHub repository listing powered by the GitHub API.
 - A section for articles about the vibe coding journey, process, and experiments.
@@ -13,7 +14,6 @@ The site includes:
 
 🔗 **Live Site:** [benlive.tv/good-vibes](https://benlive.tv/good-vibes)  
 📂 **Repo:** [github.com/benmcnulty/good-vibes](https://github.com/benmcnulty/good-vibes)
-
 
 ## AI Assistance
 
@@ -40,3 +40,21 @@ These files are updated regularly by the AI agents to keep progress transparent 
 The first development cycle has been completed successfully with all six planned modules implemented. See the full [Development Retrospective](Retrospective.md) for detailed analysis of lessons learned, technical achievements, and recommendations for future development.
 
 Planning for the next sprint is outlined in [ROADMAP-2.md](ROADMAP-2.md).
+
+## Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Start a local dev server
+npm run dev
+
+# Run lint checks and tests
+npm run validate
+
+# Build optimized production files
+npm run build
+```
+
+Run `npm run format` to apply Prettier formatting or `npm run format:check` to verify formatting.
