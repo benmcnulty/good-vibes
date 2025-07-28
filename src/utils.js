@@ -137,7 +137,7 @@ function formatDate(date, options = {}) {
 
     try {
         const dateObj = typeof date === 'string' ? new Date(date) : date;
-        if (Number.isNaN(dateObj?.getTime())) {
+        if (Number.isNaN(dateObj.getTime())) {
             throw new Error('Invalid date');
         }
         const defaultOptions = {
