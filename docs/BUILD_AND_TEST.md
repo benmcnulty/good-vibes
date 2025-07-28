@@ -77,12 +77,14 @@ npm run test:coverage
 ### Test Types
 
 #### Unit Tests (`tests/unit/`)
+
 - Test individual utility functions
 - Verify data formatting and validation
 - Check DOM manipulation helpers
 - Example: `tests/unit/utils.test.js`
 
 #### Integration Tests (`tests/integration/`)
+
 - Test complete workflows (navigation, section switching)
 - Verify HTML structure and accessibility
 - Check component interactions
@@ -124,9 +126,22 @@ npm run lint:css
 npm run lint:fix
 ```
 
+### Formatting
+
+Use Prettier to keep the codebase consistently formatted.
+
+```bash
+# Format all files
+npm run format
+
+# Check formatting only
+npm run format:check
+```
+
 ### Linting Rules
 
 #### JavaScript (ESLint)
+
 - 4-space indentation
 - Single quotes for strings
 - Semicolons required
@@ -135,6 +150,7 @@ npm run lint:fix
 - Consistent code style
 
 #### CSS (Stylelint)
+
 - 2-space indentation
 - Single quotes for strings
 - Kebab-case for class names
@@ -151,6 +167,7 @@ npm run build
 ```
 
 This process:
+
 1. Cleans the `dist/` directory
 2. Copies source files to `dist/`
 3. Minifies HTML, CSS, and JavaScript
@@ -189,7 +206,8 @@ Run the complete validation suite before commits:
 npm run validate
 ```
 
-This runs both linting and testing to ensure code quality.
+This command runs linting, formatting checks, and all tests to ensure code quality.
+Use `npm run format` to automatically fix formatting issues if they appear.
 
 ## Continuous Integration
 
@@ -200,16 +218,16 @@ The project is set up for easy CI/CD integration. Example workflow:
 name: CI
 on: [push, pull_request]
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-      - run: npm install
-      - run: npm run validate
-      - run: npm run build
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '18'
+            - run: npm install
+            - run: npm run validate
+            - run: npm run build
 ```
 
 ## Browser Support
@@ -261,5 +279,6 @@ When contributing to the project:
 4. Update documentation as needed
 
 For more details on the project structure and development guidelines, see:
+
 - [Development Tracking](DEVELOPMENT_TRACKING.md)
 - [Project Roadmap](ROADMAP.md)

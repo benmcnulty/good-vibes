@@ -13,6 +13,7 @@ GitHub Copilot acts as a supportive reviewer and coding assistant. Its main role
 - Highlight potential style inconsistencies or code smells.
 - Suggest small refactors or improvements when appropriate.
 - Reinforce the agreed conventions for code formatting, naming, and commenting.
+- Ensure Prettier formatting is applied when suggesting or reviewing code.
 
 ## Best Practices
 

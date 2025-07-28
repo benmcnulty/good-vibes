@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Gallery - Good Vibes Example</title>
+    <style>
+        :root {
+            --primary-color: #ec4899;
+            --primary-dark: #be185d;
+            --secondary-color: #8b5cf6;
+            --accent-color: #06b6d4;
+            --text-color: #1f2937;
+            --text-light: #6b7280;
+            --text-white: #ffffff;
+            --bg-color: #ffffff;
+            --bg-light: #f9fafb;
+            --bg-dark: #111827;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--bg-light);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .site-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        main {
+            min-height: calc(100vh - 120px);
+            padding: 2rem 0;
+        }
+        
+        section {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--bg-color), var(--bg-light));
+            border-radius: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: var(--bg-color);
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-item {
+            background: var(--bg-color);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .gallery-item.hidden {
+            display: none;
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .gallery-content {
+            padding: 1.5rem;
+        }
+        
+        .gallery-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .gallery-description {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .gallery-category {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .gallery-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: var(--bg-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from { transform: scale(0.9) translateY(20px); }
+            to { transform: scale(1) translateY(0); }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: var(--primary-color);
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .modal-description {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        .modal-meta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .stat-card {
+            background: var(--bg-color);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 1rem;
+                margin: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">🎨 Vibe Gallery</h1>
+                <nav>
+                    <a href="#home" class="nav-link active" aria-current="page">Home</a>
+                    <a href="#gallery" class="nav-link">Gallery</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <section id="home" class="active">
+                <div class="hero">
+                    <h1>Welcome to Vibe Gallery</h1>
+                    <p>Discover beautiful visuals and creative works that embody the spirit of vibe coding. A curated collection of inspiring imagery and design.</p>
+                    <a href="#gallery" class="cta-button nav-link">
+                        Explore Gallery 🌈
+                    </a>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">24</div>
+                        <div class="stat-label">Artwork Pieces</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Categories</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Featured Artists</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Good Vibes</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="gallery">
+                <div class="section-header">
+                    <h2 class="section-title">Visual Gallery</h2>
+                    <p class="section-subtitle">Explore our curated collection of inspiring visuals and creative works</p>
+                </div>
+                
+                <div class="gallery-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="design">Design</button>
+                    <button class="filter-btn" data-filter="photography">Photography</button>
+                    <button class="filter-btn" data-filter="artwork">Artwork</button>
+                    <button class="filter-btn" data-filter="ui">UI/UX</button>
+                    <button class="filter-btn" data-filter="inspiration">Inspiration</button>
+                </div>
+                
+                <div class="gallery-grid" id="gallery-grid">
+                    <!-- Gallery items will be rendered here -->
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Modal for image details -->
+    <div class="modal" id="gallery-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-image" id="modal-image"></div>
+            <h3 class="modal-title" id="modal-title"></h3>
+            <p class="modal-description" id="modal-description"></p>
+            <div class="modal-meta" id="modal-meta"></div>
+        </div>
+    </div>
+    
+    <script>
+        // Sample gallery data
+        const galleryItems = [
+            {
+                id: 1,
+                title: "Sunset Code Session",
+                description: "A beautiful workspace setup during golden hour, representing the perfect balance between productivity and inspiration.",
+                category: "photography",
+                date: "2025-01-05",
+                icon: "🌅",
+                fullDescription: "This photograph captures the essence of vibe coding - a developer's workspace bathed in warm sunset light, where code meets creativity. The golden hour lighting creates an atmosphere of calm productivity and inspired thinking."
+            },
+            {
+                id: 2,
+                title: "Minimalist Dashboard",
+                description: "Clean, modern interface design that embodies the principles of good vibes through simplicity and elegance.",
+                category: "ui",
+                date: "2025-01-04",
+                icon: "🌈",
+                fullDescription: "A dashboard design that prioritizes user experience and positive interactions. Every element is crafted to reduce cognitive load while maintaining visual appeal and functionality."
+            },
+            {
+                id: 3,
+                title: "Team Collaboration",
+                description: "Vibrant illustration showing developers working together in harmony, sharing ideas and building amazing things.",
+                category: "artwork",
+                date: "2025-01-03",
+                icon: "🎨",
+                fullDescription: "An artistic representation of collaborative development, where diverse minds come together to create something greater than the sum of their parts. Colors and forms flow together representing the harmony of good team dynamics."
+            },
+            {
+                id: 4,
+                title: "Code Poetry",
+                description: "Artistic representation of beautiful code structure, where programming becomes a form of creative expression.",
+                category: "design",
+                date: "2025-01-02",
+                icon: "📜",
+                fullDescription: "Code as art - this piece explores the aesthetic beauty of well-structured code. Each line flows into the next, creating patterns that are both functional and visually pleasing."
+            },
+            {
+                id: 5,
+                title: "Nature & Technology",
+                description: "Harmonious blend of natural elements with modern technology, symbolizing sustainable development practices.",
+                category: "photography",
+                date: "2025-01-01",
+                icon: "🌱",
+                fullDescription: "This image represents the integration of technology with nature, showcasing how mindful development can coexist with environmental consciousness. Green leaves intertwined with circuit patterns."
+            },
+            {
+                id: 6,
+                title: "Positive Energy Flow",
+                description: "Abstract visualization of good vibes flowing through digital spaces, creating connections and inspiring creativity.",
+                category: "artwork",
+                date: "2024-12-30",
+                icon: "✨",
+                fullDescription: "An abstract piece that visualizes the flow of positive energy through digital networks. Bright colors and flowing lines represent the connections formed when people collaborate with good intentions."
+            },
+            {
+                id: 7,
+                title: "Morning Coffee Code",
+                description: "The perfect start to a productive day - coffee, clean code, and good vibes all in one frame.",
+                category: "photography",
+                date: "2024-12-29",
+                icon: "☕",
+                fullDescription: "A scene familiar to many developers - the morning ritual of coffee and code. This image captures the quiet moments before the day begins, when possibilities are endless and creativity flows freely."
+            },
+            {
+                id: 8,
+                title: "User Journey Map",
+                description: "Thoughtful UX design that prioritizes user happiness and positive interactions throughout the experience.",
+                category: "ui",
+                date: "2024-12-28",
+                icon: "🗺️",
+                fullDescription: "A comprehensive user journey map that focuses on creating positive touchpoints at every interaction. Each step is designed to build trust and delight, making the user experience memorable for all the right reasons."
+            },
+            {
+                id: 9,
+                title: "Community Garden",
+                description: "Vibrant community space where ideas grow and flourish, representing the collaborative nature of development.",
+                category: "inspiration",
+                date: "2024-12-27",
+                icon: "🌻",
+                fullDescription: "A metaphorical garden where ideas are planted, nurtured, and allowed to grow. This represents the community aspect of development where knowledge sharing and mutual support create thriving ecosystems."
+            },
+            {
+                id: 10,
+                title: "Geometric Harmony",
+                description: "Perfect balance of shapes and colors creating visual harmony, much like well-architected code.",
+                category: "design",
+                date: "2024-12-26",
+                icon: "🔷",
+                fullDescription: "Geometric patterns that demonstrate the beauty of mathematical precision and artistic vision. Like good code architecture, each element has its place and purpose in the greater composition."
+            },
+            {
+                id: 11,
+                title: "Digital Zen",
+                description: "Peaceful digital environment that promotes focus and mindful development practices.",
+                category: "inspiration",
+                date: "2024-12-25",
+                icon: "🧘",
+                fullDescription: "A serene digital space designed to promote mindfulness and focused work. Clean lines, calming colors, and thoughtful spacing create an environment where deep work can flourish."
+            },
+            {
+                id: 12,
+                title: "Creative Workspace",
+                description: "Inspiring workspace setup that encourages creativity and positive energy in daily development work.",
+                category: "photography",
+                date: "2024-12-24",
+                icon: "🎨",
+                fullDescription: "A carefully curated workspace that balances functionality with inspiration. Plants, natural light, and thoughtful organization create an environment where creativity can thrive alongside productivity."
+            }
+        ];
+        
+        // Navigation functionality
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const target = this.getAttribute('href').substring(1);
+                
+                // Update sections
+                document.querySelectorAll('section').forEach(sec => {
+                    sec.classList.toggle('active', sec.id === target);
+                    sec.setAttribute('aria-hidden', sec.id !== target);
+                });
+                
+                // Update navigation
+                document.querySelectorAll('.nav-link').forEach(nav => {
+                    const active = nav.getAttribute('href') === '#' + target;
+                    nav.classList.toggle('active', active);
+                    if (active) { 
+                        nav.setAttribute('aria-current', 'page'); 
+                    } else { 
+                        nav.removeAttribute('aria-current'); 
+                    }
+                });
+                
+                // Load gallery if navigating to gallery section
+                if (target === 'gallery') {
+                    loadGallery();
+                }
+            });
+        });
+        
+        // Render gallery item
+        function renderGalleryItem(item) {
+            const formattedDate = new Date(item.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+            
+            return `
+                <div class="gallery-item" data-category="${item.category}" data-id="${item.id}">
+                    <div class="gallery-image">${item.icon}</div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">${item.title}</h3>
+                        <p class="gallery-description">${item.description}</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-category">${item.category}</span>
+                            <span class="gallery-date">${formattedDate}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Load gallery
+        function loadGallery() {
+            const galleryGrid = document.getElementById('gallery-grid');
+            galleryGrid.innerHTML = galleryItems
+                .map(item => renderGalleryItem(item))
+                .join('');
+                
+            // Add click handlers for gallery items
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    const galleryItem = galleryItems.find(item => item.id === itemId);
+                    if (galleryItem) {
+                        openModal(galleryItem);
+                    }
+                });
+            });
+        }
+        
+        // Filter functionality
+        function initializeFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active filter button
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter gallery items
+                    galleryItems.forEach(item => {
+                        const itemCategory = item.getAttribute('data-category');
+                        if (filter === 'all' || itemCategory === filter) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        }
+        
+        // Modal functionality
+        function openModal(item) {
+            const modal = document.getElementById('gallery-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const modalMeta = document.getElementById('modal-meta');
+            
+            // Populate modal content
+            modalImage.textContent = item.icon;
+            modalTitle.textContent = item.title;
+            modalDescription.textContent = item.fullDescription;
+            
+            const formattedDate = new Date(item.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            modalMeta.innerHTML = `
+                <span class="gallery-category">${item.category}</span>
+                <span class="gallery-date">${formattedDate}</span>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('gallery-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Initialize modal close handlers
+        function initializeModal() {
+            const modalClose = document.getElementById('modal-close');
+            const modal = document.getElementById('gallery-modal');
+            
+            modalClose.addEventListener('click', closeModal);
+            
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+        }
+        
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeModal();
+            
+            // Load gallery when page loads if on gallery section
+            if (window.location.hash === '#gallery') {
+                loadGallery();
+                initializeFilters();
+            }
+            
+            // Initialize filters after gallery loads
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList' && mutation.target.id === 'gallery-grid') {
+                        initializeFilters();
+                    }
+                });
+            });
+            
+            const galleryGrid = document.getElementById('gallery-grid');
+            observer.observe(galleryGrid, { childList: true });
+        });
+    </script>
+</body>
+</html>

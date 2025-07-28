@@ -6,13 +6,14 @@ This is the public repository for [benlive.tv/good-vibes](https://benlive.tv/goo
 It serves as an open example of a "vibe coding" project — an experimental approach to building web pages that reflect spontaneous, creative coding sessions.
 
 The site includes:
+
 - An introduction to vibe coding and this project's purpose.
-- A section listing related GitHub repositories.
+- A dynamic GitHub repository listing powered by the GitHub API.
 - A section for articles about the vibe coding journey, process, and experiments.
+- A suite of interactive Vibe Coding examples demonstrating modern SPA techniques.
 
 🔗 **Live Site:** [benlive.tv/good-vibes](https://benlive.tv/good-vibes)  
 📂 **Repo:** [github.com/benmcnulty/good-vibes](https://github.com/benmcnulty/good-vibes)
-
 
 ## AI Assistance
 
@@ -28,11 +29,32 @@ The planning and tracking documents live in the [docs](docs/) directory:
 
 - [Good Vibes Roadmap](docs/ROADMAP.md)
 - [Development Tracking Guide](docs/DEVELOPMENT_TRACKING.md)
+- [Sprint 2 Plan](ROADMAP-2.md)
 
 These files are updated regularly by the AI agents to keep progress transparent and aligned with the project's goals.
 
 ## Development Status
 
-**Current Status:** ✅ **Production Ready** (January 2025)
+**Current Status:** ✅ **Production Ready** (July 2025)
 
 The first development cycle has been completed successfully with all six planned modules implemented. See the full [Development Retrospective](Retrospective.md) for detailed analysis of lessons learned, technical achievements, and recommendations for future development.
+
+Planning for the next sprint is outlined in [ROADMAP-2.md](ROADMAP-2.md).
+
+## Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Start a local dev server
+npm run dev
+
+# Run lint checks and tests
+npm run validate
+
+# Build optimized production files
+npm run build
+```
+
+Run `npm run format` to apply Prettier formatting or `npm run format:check` to verify formatting.

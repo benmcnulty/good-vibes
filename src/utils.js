@@ -108,18 +108,18 @@ function escapeHTML(str) {
     if (typeof str !== 'string') {
         return str;
     }
-    return str.replace(/[&<>"'`=/]/g, function (s) {
-        return ({
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            '\'': '&#39;',
-            '`': '&#96;',
-            '=': '&#61;',
-            '/': '&#47;'
-        })[s];
-    });
+    const htmlEscapeMap = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        '\'': '&#39;',
+        '`': '&#96;',
+        '=': '&#61;',
+        '/': '&#47;'
+    };
+
+    return str.replace(/[&<>"'`=/]/g, s => htmlEscapeMap[s]);
 }
 
 /**
@@ -137,6 +137,9 @@ function formatDate(date, options = {}) {
 
     try {
         const dateObj = typeof date === 'string' ? new Date(date) : date;
+        if (Number.isNaN(dateObj.getTime())) {
+            throw new Error('Invalid date');
+        }
         const defaultOptions = {
             year: 'numeric',
             month: 'long',
