@@ -284,29 +284,8 @@ function formatArticleDate(dateString) {
     }
 }
 
-/**
- * Safely escape HTML characters
- * @param {string} str - String to escape
- * @returns {string} - Escaped string
- */
-function escapeHTML(str) {
-    if (typeof str !== 'string') {
-        return str;
-    }
-    const htmlEscapeMap = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        '\'': '&#39;',
-        '`': '&#96;',
-        '=': '&#61;',
-        '/': '&#47;'
-    };
-
-    return str.replace(/[&<>"'`=/]/g, s => htmlEscapeMap[s]);
-}
-
+// Import escapeHTML utility function
+import { escapeHTML } from './utils';
 // =============================================================================
 // Filtering and Sorting
 // =============================================================================
