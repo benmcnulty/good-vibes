@@ -17,8 +17,8 @@
         "format": "prettier \"**/*.{js,css,html,md,json}\" --write",
         "format:check": "prettier \"**/*.{js,css,html,md,json}\" --check",
         "build": "npm run build:clean && npm run build:copy && npm run build:minify",
-        "build:clean": "rm -rf dist && mkdir -p dist",
-        "build:copy": "cp -r src/* dist/",
+        "build:clean": "node scripts/build-assets.js clean",
+        "build:copy": "node scripts/build-assets.js copy",
         "build:minify": "node scripts/minify.js",
         "validate": "npm run lint && npm test",
         "serve:dist": "python3 -m http.server 8080 --directory dist"

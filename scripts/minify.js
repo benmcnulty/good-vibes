@@ -9,6 +9,7 @@ import { readFileSync, writeFileSync, readdirSync, statSync } from 'fs';
 import { join, extname } from 'path';
 import { minify as terserMinify } from 'terser';
 import postcss from 'postcss';
+import cssnano from 'cssnano';
 import { minify as htmlMinify } from 'html-minifier-terser';
 
 const DIST_DIR = 'dist';
@@ -40,6 +41,7 @@ async function minifyJavaScript(filePath, outputPath) {
         console.log(`✅ Minified JS: ${filePath} → ${outputPath}`);
     } catch (error) {
         console.error(`❌ Error minifying ${filePath}:`, error.message);
+        throw error;
     }
 }
 
@@ -50,7 +52,7 @@ async function minifyCSS(filePath, outputPath) {
     try {
         const css = readFileSync(filePath, 'utf8');
         const result = await postcss([
-            require('cssnano')({
+            cssnano({
                 preset: ['default', {
                     discardComments: { removeAll: true },
                     normalizeWhitespace: true,
@@ -64,6 +66,7 @@ async function minifyCSS(filePath, outputPath) {
         console.log(`✅ Minified CSS: ${filePath} → ${outputPath}`);
     } catch (error) {
         console.error(`❌ Error minifying ${filePath}:`, error.message);
+        throw error;
     }
 }
 
@@ -88,6 +91,7 @@ async function minifyHTML(filePath, outputPath) {
         console.log(`✅ Minified HTML: ${filePath} → ${outputPath}`);
     } catch (error) {
         console.error(`❌ Error minifying ${filePath}:`, error.message);
+        throw error;
     }
 }
 

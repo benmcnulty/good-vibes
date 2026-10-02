@@ -50,13 +50,13 @@ The existing dev/build paths serve/copy `src/` without the top-level `examples/`
 
 ## Getting Started
 
-Use Node/npm with the committed lockfile and Python 3 for the static server. The package declares Node >=18; the existing CI matrix uses 18/20. Current-runtime/browser compatibility is not certified by this documentation change. Build scripts use POSIX `rm`, `mkdir` and `cp`; run them in a compatible shell. On Windows, a direct source preview is:
+Use Node/npm with the committed lockfile and Python 3 for the static server. The package declares Node >=18; the existing CI matrix uses 18/20. The 2026-10-02 candidate was checked locally with Node 24; consult its CI for the declared 18/20 matrix. Build cleanup and copying use Node filesystem APIs and work without POSIX shell commands. On Windows, a direct source preview is:
 
 ```powershell
 python -m http.server 8080 --directory src
 ```
 
-Open <http://localhost:8080>. For a non-watch test invocation that avoids shell glob expansion, use `node --test tests` after installing dependencies. The scripts below are the repository's existing Unix-oriented workflow:
+Open <http://localhost:8080>. For a non-watch test invocation that avoids shell glob expansion, use `node --test tests` after installing dependencies. The install, lint, test and build commands work with the committed lockfile:
 
 ```bash
 # Install the committed dependency lock
@@ -76,6 +76,8 @@ Run `npm run format` to apply Prettier formatting or `npm run format:check` to v
 
 ## Verification, contributions and license
 
-The 2026-10-02 documentation review inspected the implementation, package scripts and test/build-only CI workflow. It did not rerun a local suite, full browser/accessibility checks or a deployment. Consult the candidate commit's CI before relying on its checks. Building writes local `dist/` files; it does not publish a site.
+The 2026-10-02 candidate passed `npm ci --ignore-scripts`, lint (36 existing JavaScript warnings, no errors), all 57 tests, coverage execution and the local build on Node 24. Regression tests cover date-only formatting in UTC, America/New_York and Pacific/Auckland, actual CSS minification under ESM, and a nonzero build exit on invalid assets. The lockfile now includes the already-declared Prettier version; other dependency versions were preserved.
+
+The current coverage runner does not measure the full browser application: existing tests load much of it through JSDOM/VM, and the report mainly covers the minifier. No full browser/accessibility checks, deployment or live GitHub-service test was performed. Consult exact candidate CI for the 18/20 matrix. Building writes local `dist/` files; it does not publish a site.
 
 Keep contributions focused and preserve the project's plain HTML/CSS/JavaScript structure. Run relevant lint/tests/build checks and report failures or unrun steps explicitly. See [AGENTS.md](AGENTS.md) and the original retrospective for project context. Licensed under [MIT](LICENSE).

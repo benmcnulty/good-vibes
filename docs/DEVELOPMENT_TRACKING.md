@@ -81,6 +81,15 @@ This tracking approach ensures iterative progress without strict deadlines, allo
 
 ## Development Cycle Status
 
-See the centralized [Project Status](../STATUS.md) for the latest development cycle completion and production readiness details.
+See the README's [Development Status](../README.md#development-status) for the current historical scope and verification limits.
 
 For detailed analysis of achievements, lessons learned, and Version 2 recommendations, see the [Development Retrospective](../Retrospective.md).
+
+## 2026-10-02 portfolio maintenance candidate
+
+- Reconciled the lockfile with the existing Prettier declaration, without dependency upgrades.
+- Replaced shell-specific cleanup/copy commands with a bounded Node build helper.
+- Imported cssnano through ESM and propagated minifier errors instead of reporting a successful build after failures.
+- Made ISO date-only formatting consistent across local timezones while preserving explicit caller timezone overrides.
+- Added five regression tests; Node 24 install, lint, 57 tests, coverage execution and build passed locally. Existing lint warnings and incomplete application coverage are disclosed in the README.
+- Preserved the standalone-example packaging limitation and historical retrospective. No deployment was performed.
