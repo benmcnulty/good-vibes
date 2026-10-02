@@ -146,7 +146,13 @@ function formatDate(date, options = {}) {
             day: 'numeric'
         };
 
-        return dateObj.toLocaleDateString('en-US', { ...defaultOptions, ...options });
+        // ISO date-only strings represent a calendar date, not a local midnight.
+        const calendarOptions = typeof date === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(date)
+            ? { timeZone: 'UTC' }
+            : {};
+        return dateObj.toLocaleDateString('en-US', {
+            ...defaultOptions, ...calendarOptions, ...options
+        });
     } catch (error) {
         console.warn('Invalid date format:', date);
         return 'Invalid date';
