@@ -56,7 +56,7 @@ Use Node/npm with the committed lockfile and Python 3 for the static server. The
 python -m http.server 8080 --directory src
 ```
 
-Open <http://localhost:8080>. For a non-watch test invocation that avoids shell glob expansion, use `node --test tests` after installing dependencies. The install, lint, test and build commands work with the committed lockfile:
+Open <http://localhost:8080>. For a non-watch test invocation that avoids shell glob expansion, use `node --test` after installing dependencies. The install, lint, test and build commands work with the committed lockfile:
 
 ```bash
 # Install the committed dependency lock
