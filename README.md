@@ -78,6 +78,10 @@ Run `npm run format` to apply Prettier formatting or `npm run format:check` to v
 
 The 2026-10-02 candidate passed `npm ci --ignore-scripts`, lint (36 existing JavaScript warnings, no errors), all 57 tests, coverage execution and the local build on Node 24. Regression tests cover date-only formatting in UTC, America/New_York and Pacific/Auckland, actual CSS minification under ESM, and a nonzero build exit on invalid assets. The lockfile now includes the already-declared Prettier version; other dependency versions were preserved.
 
+Coverage execution also generates `coverage/lcov.info` through c8's explicit
+LCOV reporter for the existing CI upload step; the local artifact was verified.
+That establishes an available report, not successful external upload.
+
 The current coverage runner does not measure the full browser application: existing tests load much of it through JSDOM/VM, and the report mainly covers the minifier. No full browser/accessibility checks, deployment or live GitHub-service test was performed. Consult exact candidate CI for the 18/20 matrix. Building writes local `dist/` files; it does not publish a site.
 
 Keep contributions focused and preserve the project's plain HTML/CSS/JavaScript structure. Run relevant lint/tests/build checks and report failures or unrun steps explicitly. See [AGENTS.md](AGENTS.md) and the original retrospective for project context. Licensed under [MIT](LICENSE).

@@ -93,3 +93,5 @@ For detailed analysis of achievements, lessons learned, and Version 2 recommenda
 - Made ISO date-only formatting consistent across local timezones while preserving explicit caller timezone overrides.
 - Added five regression tests; Node 24 install, lint, 57 tests, coverage execution and build passed locally. Existing lint warnings and incomplete application coverage are disclosed in the README.
 - Preserved the standalone-example packaging limitation and historical retrospective. No deployment was performed.
+
+- Coverage follow-up: configured explicit text/LCOV reporters and verified local `coverage/lcov.info`; the report primarily measures minifier execution and does not certify whole-app coverage or upload success.
