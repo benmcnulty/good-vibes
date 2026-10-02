@@ -1,6 +1,6 @@
 # Good Vibes
 
-This is the public repository for [benlive.tv/good-vibes](https://benlive.tv/good-vibes).
+This is the source repository for an experimental single-page site about AI-assisted web development. The previously advertised `benlive.tv/good-vibes` URL rendered the host's Page Not Found during the 2026-10-02 portfolio review; no current hosted demo is verified here.
 
 **Good Vibes** is a standalone single-page application (SPA) built with HTML, CSS, and JavaScript.  
 It serves as an open example of a "vibe coding" project — an experimental approach to building web pages that reflect spontaneous, creative coding sessions.
@@ -12,7 +12,6 @@ The site includes:
 - A section for articles about the vibe coding journey, process, and experiments.
 - A suite of interactive Vibe Coding examples demonstrating modern SPA techniques.
 
-🔗 **Live Site:** [benlive.tv/good-vibes](https://benlive.tv/good-vibes)  
 📂 **Repo:** [github.com/benmcnulty/good-vibes](https://github.com/benmcnulty/good-vibes)
 
 ## AI Assistance
@@ -31,21 +30,37 @@ The planning and tracking documents live in the [docs](docs/) directory:
 - [Development Tracking Guide](docs/DEVELOPMENT_TRACKING.md)
 - [Sprint 2 Plan](ROADMAP-2.md)
 
-These files are updated regularly by the AI agents to keep progress transparent and aligned with the project's goals.
+These documents record the project's planning history. Proposed roadmap work should not be read as delivered functionality.
 
 ## Development Status
 
-**Current Status:** ✅ **Production Ready** (July 2025)
+**Current status:** Historical experimental SPA. The July 2025 retrospective records its first development cycle; it is not a current production-readiness or accessibility certification.
 
-The first development cycle has been completed successfully with all six planned modules implemented. See the full [Development Retrospective](Retrospective.md) for detailed analysis of lessons learned, technical achievements, and recommendations for future development.
+The original development cycle and its implementation decisions are described in the [Development Retrospective](Retrospective.md) for detailed analysis of lessons learned, technical achievements, and recommendations for future development.
 
 Planning for the next sprint is outlined in [ROADMAP-2.md](ROADMAP-2.md).
 
+## Architecture and local requirements
+
+`src/index.html` loads vanilla scripts and styles. `src/script.js` drives section navigation; `src/githubService.js` and `src/articlesService.js` supply repository/article data. Five standalone examples live under `examples/`. Tests under `tests/` use Node's test runner and JSDOM. No framework server or secret API key is required.
+
+The public GitHub listing needs network access and is subject to unauthenticated API rate limits. Loading the page does not verify every remote link or repository result. Article/example content is an experiment, not evidence that every roadmap item shipped.
+
+The existing dev/build paths serve/copy `src/` without the top-level `examples/` directory, so the main page's relative example links do not resolve in those outputs. To inspect an individual example, serve the repository root with `python -m http.server 8081` and open, for example, <http://localhost:8081/examples/chat-spa/>. This limitation remains explicit; no working integrated demo deployment is claimed.
+
 ## Getting Started
 
+Use Node/npm with the committed lockfile and Python 3 for the static server. The package declares Node >=18; the existing CI matrix uses 18/20. Current-runtime/browser compatibility is not certified by this documentation change. Build scripts use POSIX `rm`, `mkdir` and `cp`; run them in a compatible shell. On Windows, a direct source preview is:
+
+```powershell
+python -m http.server 8080 --directory src
+```
+
+Open <http://localhost:8080>. For a non-watch test invocation that avoids shell glob expansion, use `node --test tests` after installing dependencies. The scripts below are the repository's existing Unix-oriented workflow:
+
 ```bash
-# Install dependencies
-npm install
+# Install the committed dependency lock
+npm ci
 
 # Start a local dev server
 npm run dev
@@ -58,3 +73,9 @@ npm run build
 ```
 
 Run `npm run format` to apply Prettier formatting or `npm run format:check` to verify formatting.
+
+## Verification, contributions and license
+
+The 2026-10-02 documentation review inspected the implementation, package scripts and test/build-only CI workflow. It did not rerun a local suite, full browser/accessibility checks or a deployment. Consult the candidate commit's CI before relying on its checks. Building writes local `dist/` files; it does not publish a site.
+
+Keep contributions focused and preserve the project's plain HTML/CSS/JavaScript structure. Run relevant lint/tests/build checks and report failures or unrun steps explicitly. See [AGENTS.md](AGENTS.md) and the original retrospective for project context. Licensed under [MIT](LICENSE).
